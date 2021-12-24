@@ -1,41 +1,28 @@
 ---
 title: Introduction
+bookToc: false
 type: docs
 ---
 
-# Acerbo datus maxime
+# 学习笔记
 
-{{< columns >}}
-## Astris ipse furtiva
-
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
-
-<--->
-
-## Suis quot vota
-
-Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-nunc! Fragosis suae dextra geruntur functus vulgata.
-{{< /columns >}}
+## Front Matter Options
 
 
-## Tempora nisi nunc
+```toml
+---
+title: GitLab Workflow with Infrastructure as Code
+weight: 11
+bookHidden: true
+bookCollapseSection: true
+bookToc: false
+bookFlatSection: true
+---
+```
 
-Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
-tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
-sequens!
-
-    var panel = ram_design;
-    if (backup + system) {
-        file.readPoint = network_native;
-        sidebar_engine_device(cell_tftp_raster,
-                dual_login_paper.adf_vci.application_reader_design(
-                graphicsNvramCdma, lpi_footer_snmp, integer_model));
-    }
-
-## Locis suis novi cum suoque decidit eadem
-
-Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab?
+*  `bookHidden`: if set to true, hides the page from the left navigation
+*  `bookCollapseSection`: if set to true, it only shows this page in the left nav and child pages only appear when navigated to.
+*  `weight`: Sets the order in the left navigation with 1 at the top and 10000 at the bottom.
+*  `title`: the text that shows in the left navigation for the title
+*  `bookToc`: Hides the page-specific table of content (on the right-hand side of the page)
+*  `bookFlatSection`: If set to true, promotes the pages at this level to the same tier as the _index page.
