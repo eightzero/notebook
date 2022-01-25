@@ -150,7 +150,18 @@ body[dir="rtl"] .book-menu {
   margin: $padding-16 * 2 0;
 
   > a,
-  > span,
+  > span{
+    font-size: 1.2em;  
+    font-weight: bolder;
+  }
+  > span::after {
+    content: '';
+      width: 96%;
+      height: 1px;
+      display: block;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(80, 80, 80, 0.1);
+    }
   > label {
     font-weight: bolder;
   }
