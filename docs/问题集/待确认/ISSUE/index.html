@@ -1,0 +1,517 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="yurtctl convert错误 #  [root@master ~]# yurtctl convert --provider kubeadm --kubeadm-conf-path /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master I1201 02:01:31.538410 42272 convert.go:318] mark master as the cloud-node I1201 02:02:51.677158 42272 util.go:543] servant job(yurtctl-disable-node-controller-master) has succeeded I1201 02:02:51.677200 42272 convert.go:343] complete disabling node-controller I1201 02:02:51.678398 42272 convert.go:443] kube-public/cluster-info configmap already exists, skip to prepare it I1201 02:02:51.690122 42272 convert.go:408] deploying the yurt-hub and resetting the kubelet service on edge nodes... E1201 02:04:51.694906 42272 util.go:540] fail to run servant job(yurtctl-servant-convert-node1): wait for job to be complete timeout I1201 02:04:51.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="yurtctl convert错误 #  [root@master ~]# yurtctl convert --provider kubeadm --kubeadm-conf-path /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master I1201 02:01:31.538410 42272 convert.go:318] mark master as the cloud-node I1201 02:02:51.677158 42272 util.go:543] servant job(yurtctl-disable-node-controller-master) has succeeded I1201 02:02:51.677200 42272 convert.go:343] complete disabling node-controller I1201 02:02:51.678398 42272 convert.go:443] kube-public/cluster-info configmap already exists, skip to prepare it I1201 02:02:51.690122 42272 convert.go:408] deploying the yurt-hub and resetting the kubelet service on edge nodes... E1201 02:04:51.694906 42272 util.go:540] fail to run servant job(yurtctl-servant-convert-node1): wait for job to be complete timeout I1201 02:04:51.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/"><meta property="article:section" content="docs">
+<title>Issue | Note Book</title>
+<link rel=manifest href=/notebook/manifest.json>
+<link rel=icon href=/notebook/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/notebook/book.min.756888afa9a53184830d78878e2118e3ba3b7d893ff39fe99cf3bb91dd816979.css integrity="sha256-dWiIr6mlMYSDDXiHjiEY47o7fYk/85/pnPO7kd2BaXk=" crossorigin=anonymous>
+<script defer src=/notebook/flexsearch.min.js></script>
+<script defer src=/notebook/en.search.min.d5f65cb731a5b2c0ce73182558c9a93f501bd2aa1ffddd83219cf1c6fd9e4198.js integrity="sha256-1fZctzGlssDOcxglWMmpP1Ab0qof/d2DIZzxxv2eQZg=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/notebook/><span>Note Book</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>K8s</span>
+<ul>
+<li>
+<input type=checkbox id=section-8be6731edcdca8ab5f498095f8fe8989 class=toggle>
+<label for=section-8be6731edcdca8ab5f498095f8fe8989 class="flex justify-between">
+<a role=button>Prometheus</a>
+</label>
+<ul>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle>
+<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between">
+<a role=button>Dashboard</a>
+</label>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/>Dashborad安装</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>Kubectl常用命令</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>边缘计算</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/>Openyurt</a>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/WasmEdge/>Wasm Edge</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>问题集</span>
+<ul>
+<li>
+<span>已解决</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/ class=active>Issue</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=https://github.com/eightzero target=_blank rel=noopener>
+Github
+</a>
+</li>
+<li>
+<a href=https://eightzero.site target=_blank rel=noopener>
+博客
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/notebook/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Issue</strong>
+<label for=toc-control>
+<img src=/notebook/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#yurtctl-convert错误>yurtctl convert错误</a></li>
+<li><a href=#vcluster>VCluster</a></li>
+<li><a href=#karmada>Karmada</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h2 id=yurtctl-convert错误>
+yurtctl convert错误
+<a class=anchor href=#yurtctl-convert%e9%94%99%e8%af%af>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># yurtctl convert  --provider kubeadm --kubeadm-conf-path  /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master</span>
+I1201 02:01:31.538410   <span style=color:#ae81ff>42272</span> convert.go:318<span style=color:#f92672>]</span> mark master as the cloud-node
+I1201 02:02:51.677158   <span style=color:#ae81ff>42272</span> util.go:543<span style=color:#f92672>]</span> servant job<span style=color:#f92672>(</span>yurtctl-disable-node-controller-master<span style=color:#f92672>)</span> has succeeded
+I1201 02:02:51.677200   <span style=color:#ae81ff>42272</span> convert.go:343<span style=color:#f92672>]</span> complete disabling node-controller
+I1201 02:02:51.678398   <span style=color:#ae81ff>42272</span> convert.go:443<span style=color:#f92672>]</span> kube-public/cluster-info configmap already exists, skip to prepare it
+I1201 02:02:51.690122   <span style=color:#ae81ff>42272</span> convert.go:408<span style=color:#f92672>]</span> deploying the yurt-hub and resetting the kubelet service on edge nodes...
+E1201 02:04:51.694906   <span style=color:#ae81ff>42272</span> util.go:540<span style=color:#f92672>]</span> fail to run servant job<span style=color:#f92672>(</span>yurtctl-servant-convert-node1<span style=color:#f92672>)</span>: wait <span style=color:#66d9ef>for</span> job to be complete timeout
+I1201 02:04:51.694954   <span style=color:#ae81ff>42272</span> convert.go:414<span style=color:#f92672>]</span> complete deploying yurt-hub on edge nodes
+I1201 02:04:51.694963   <span style=color:#ae81ff>42272</span> convert.go:417<span style=color:#f92672>]</span> deploying the yurt-hub and resetting the kubelet service on cloud nodes
+E1201 02:06:51.700340   <span style=color:#ae81ff>42272</span> util.go:540<span style=color:#f92672>]</span> fail to run servant job<span style=color:#f92672>(</span>yurtctl-servant-convert-master<span style=color:#f92672>)</span>: wait <span style=color:#66d9ef>for</span> job to be complete timeout
+I1201 02:06:51.700441   <span style=color:#ae81ff>42272</span> convert.go:423<span style=color:#f92672>]</span> complete deploying yurt-hub on cloud nodes
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get pod -A</span>
+NAMESPACE      NAME                                              READY   STATUS      RESTARTS   AGE
+kube-system    cilium-89zdb                                      1/1     Running     <span style=color:#ae81ff>17</span>         23d
+kube-system    cilium-bt9zk                                      1/1     Running     <span style=color:#ae81ff>41</span>         23d
+kube-system    cilium-operator-57b67c8d5f-rldrh                  1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    cilium-operator-57b67c8d5f-tdp8m                  1/1     Running     <span style=color:#ae81ff>123</span>        23d
+kube-system    coredns-7f89b7bc75-t6vq7                          1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    coredns-7f89b7bc75-v259v                          1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    etcd-master                                       1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    kube-apiserver-master                             1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    kube-controller-manager-master                    1/1     Running     <span style=color:#ae81ff>0</span>          10m
+kube-system    kube-scheduler-master                             1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    yurt-controller-manager-77b97fd47b-m2n6l          1/1     Running     <span style=color:#ae81ff>0</span>          11m
+kube-system    yurt-hub-master                                   1/1     Running     <span style=color:#ae81ff>0</span>          8m25s
+kube-system    yurt-hub-node1                                    1/1     Running     <span style=color:#ae81ff>0</span>          9m53s
+kube-system    yurtctl-servant-convert-master-tz8qm              0/1     Completed   <span style=color:#ae81ff>1</span>          8m26s
+kube-system    yurtctl-servant-convert-node1-mtrgk               0/1     Completed   <span style=color:#ae81ff>2</span>          10m
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># yurtctl revert --kubeadm-conf-path  /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf</span>
+I1201 02:14:33.097932   <span style=color:#ae81ff>44924</span> revert.go:172<span style=color:#f92672>]</span> yurt controller manager is removed
+I1201 02:14:33.100463   <span style=color:#ae81ff>44924</span> revert.go:182<span style=color:#f92672>]</span> serviceaccount <span style=color:#66d9ef>for</span> yurt controller manager is removed
+I1201 02:14:33.102799   <span style=color:#ae81ff>44924</span> revert.go:192<span style=color:#f92672>]</span> clusterrole <span style=color:#66d9ef>for</span> yurt controller manager is removed
+I1201 02:14:33.106710   <span style=color:#ae81ff>44924</span> revert.go:202<span style=color:#f92672>]</span> clusterrolebinding <span style=color:#66d9ef>for</span> yurt controller manager is removed
+I1201 02:14:33.123802   <span style=color:#ae81ff>44924</span> revert.go:353<span style=color:#f92672>]</span> deployment <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.124798   <span style=color:#ae81ff>44924</span> revert.go:363<span style=color:#f92672>]</span> Role <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.125830   <span style=color:#ae81ff>44924</span> revert.go:372<span style=color:#f92672>]</span> ClusterRole <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.129656   <span style=color:#ae81ff>44924</span> revert.go:381<span style=color:#f92672>]</span> ClusterRoleBinding <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.130883   <span style=color:#ae81ff>44924</span> revert.go:391<span style=color:#f92672>]</span> RoleBinding <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.275224   <span style=color:#ae81ff>44924</span> revert.go:401<span style=color:#f92672>]</span> secret <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.474971   <span style=color:#ae81ff>44924</span> revert.go:411<span style=color:#f92672>]</span> Service <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.476301   <span style=color:#ae81ff>44924</span> revert.go:421<span style=color:#f92672>]</span> MutatingWebhookConfiguration <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.477440   <span style=color:#ae81ff>44924</span> revert.go:431<span style=color:#f92672>]</span> ValidatingWebhookConfiguration <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.492314   <span style=color:#ae81ff>44924</span> revert.go:440<span style=color:#f92672>]</span> crd <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.502202   <span style=color:#ae81ff>44924</span> revert.go:449<span style=color:#f92672>]</span> UnitedDeploymentcrd <span style=color:#66d9ef>for</span> yurt app manager is removed
+I1201 02:14:33.502231   <span style=color:#ae81ff>44924</span> revert.go:221<span style=color:#f92672>]</span> yurt app manager is removed
+I1201 02:15:23.523798   <span style=color:#ae81ff>44924</span> util.go:543<span style=color:#f92672>]</span> servant job<span style=color:#f92672>(</span>yurtctl-enable-node-controller-master<span style=color:#f92672>)</span> has succeeded
+I1201 02:15:23.523830   <span style=color:#ae81ff>44924</span> revert.go:234<span style=color:#f92672>]</span> complete enabling node-controller
+I1201 02:15:43.535988   <span style=color:#ae81ff>44924</span> util.go:543<span style=color:#f92672>]</span> servant job<span style=color:#f92672>(</span>yurtctl-servant-revert-node1<span style=color:#f92672>)</span> has succeeded
+I1201 02:15:43.536038   <span style=color:#ae81ff>44924</span> revert.go:247<span style=color:#f92672>]</span> complete removing yurt-hub and resetting kubelet service on edge nodes
+I1201 02:15:53.544282   <span style=color:#ae81ff>44924</span> util.go:543<span style=color:#f92672>]</span> servant job<span style=color:#f92672>(</span>yurtctl-servant-revert-master<span style=color:#f92672>)</span> has succeeded
+I1201 02:15:53.544320   <span style=color:#ae81ff>44924</span> revert.go:255<span style=color:#f92672>]</span> complete removing yurt-hub and resetting kubelet service on cloud nodes
+I1201 02:15:53.551972   <span style=color:#ae81ff>44924</span> revert.go:263<span style=color:#f92672>]</span> delete yurthub clusterrole and clusterrolebinding
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get pod -A</span>
+NAMESPACE      NAME                                              READY   STATUS      RESTARTS   AGE
+awx            awx-demo-7df55fb78c-hr9mz                         4/4     Running     <span style=color:#ae81ff>24</span>         6d23h
+awx            awx-demo-postgres-0                               1/1     Running     <span style=color:#ae81ff>6</span>          6d23h
+awx            awx-operator-controller-manager-877886796-ljlvv   2/2     Running     <span style=color:#ae81ff>28</span>         7d
+default        details-v1-66b6955995-67fhq                       2/2     Running     <span style=color:#ae81ff>80</span>         23d
+default        httpbin-66cdbdb6c5-zqrd7                          2/2     Running     <span style=color:#ae81ff>18</span>         23d
+default        productpage-v1-5d9b4c9849-nbjzp                   2/2     Running     <span style=color:#ae81ff>79</span>         23d
+default        ratings-v1-fd78f799f-4rxhw                        2/2     Running     <span style=color:#ae81ff>78</span>         23d
+default        reviews-v1-6549ddccc5-fctws                       2/2     Running     <span style=color:#ae81ff>79</span>         23d
+default        reviews-v2-76c4865449-jdzr2                       2/2     Running     <span style=color:#ae81ff>78</span>         23d
+default        reviews-v3-6b554c875-l7rj5                        2/2     Running     <span style=color:#ae81ff>77</span>         23d
+istio-system   istio-egressgateway-797b55644-r8v47               1/1     Running     <span style=color:#ae81ff>40</span>         23d
+istio-system   istio-ingressgateway-5ff88fbcc7-9bbdx             1/1     Running     <span style=color:#ae81ff>40</span>         23d
+istio-system   istiod-8fd46755b-dww2b                            1/1     Running     <span style=color:#ae81ff>40</span>         23d
+kube-system    cilium-89zdb                                      1/1     Running     <span style=color:#ae81ff>17</span>         23d
+kube-system    cilium-bt9zk                                      1/1     Running     <span style=color:#ae81ff>41</span>         23d
+kube-system    cilium-operator-57b67c8d5f-rldrh                  1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    cilium-operator-57b67c8d5f-tdp8m                  1/1     Running     <span style=color:#ae81ff>123</span>        23d
+kube-system    coredns-7f89b7bc75-t6vq7                          1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    coredns-7f89b7bc75-v259v                          1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    etcd-master                                       1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    hubble-relay-6fcf45468f-pls4w                     1/1     Running     <span style=color:#ae81ff>277</span>        23d
+kube-system    hubble-ui-7cd68fdf6d-c25b7                        3/3     Running     <span style=color:#ae81ff>119</span>        23d
+kube-system    kube-apiserver-master                             1/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    kube-controller-manager-master                    1/1     Running     <span style=color:#ae81ff>0</span>          2m20s
+kube-system    kube-scheduler-master                             0/1     Running     <span style=color:#ae81ff>1</span>          21h
+kube-system    yurtctl-servant-convert-master-tz8qm              0/1     Completed   <span style=color:#ae81ff>1</span>          12m
+kube-system    yurtctl-servant-convert-node1-mtrgk               0/1     Completed   <span style=color:#ae81ff>2</span>          14m
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get nodes</span>
+NAME     STATUS   ROLES                  AGE   VERSION
+master   Ready    control-plane,master   23d   v1.20.13
+node1    Ready    &lt;none&gt;                 23d   v1.20.13
+</code></pre></div><h2 id=vcluster>
+VCluster
+<a class=anchor href=#vcluster>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api-provider-nested/master/virtualcluster/config/sampleswithspec/clusterversion_v1_nodeport.yaml</span>
+clusterversion.tenancy.x-k8s.io/cv-sample-np created
+<span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl vc create -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api-provider-nested/master/virtualcluster/config/sampleswithspec/virtualcluster_1_nodeport.yaml -o vc-1.kubeconfig</span>
+
+2021/12/05 23:56:04 etcd is ready
+cannot find sts/apiserver in ns default-56325d-vc-sample-1: default-56325d-vc-sample-1/apiserver is not ready in <span style=color:#ae81ff>120</span> seconds
+</code></pre></div><pre tabindex=0><code>[root@master ~]# kubectl get pod -ndefault-56325d-vc-sample-1
+NAME          READY   STATUS              RESTARTS   AGE
+apiserver-0   0/1     ContainerCreating   0          3m16s
+etcd-0        1/1     Running             0          4m6s
+</code></pre><pre tabindex=0><code>[root@master ~]# kubectl describe pod -ndefault-56325d-vc-sample-1 apiserver-0
+Name:           apiserver-0
+Namespace:      default-56325d-vc-sample-1
+Priority:       0
+Node:           node1/192.168.92.135
+Start Time:     Sun, 05 Dec 2021 23:56:03 -0500
+Labels:         component-name=apiserver
+                controller-revision-hash=apiserver-77b4b4dfbf
+                statefulset.kubernetes.io/pod-name=apiserver-0
+Annotations:    &lt;none&gt;
+Status:         Pending
+IP:
+IPs:            &lt;none&gt;
+Controlled By:  StatefulSet/apiserver
+Containers:
+  apiserver:
+    Container ID:
+    Image:         virtualcluster/apiserver-v1.16.2
+    Image ID:
+    Port:          6443/TCP
+    Host Port:     0/TCP
+    Command:
+      kube-apiserver
+    Args:
+      --bind-address=0.0.0.0
+      --allow-privileged=true
+      --anonymous-auth=true
+      --client-ca-file=/etc/kubernetes/pki/root/tls.crt
+      --tls-cert-file=/etc/kubernetes/pki/apiserver/tls.crt
+      --tls-private-key-file=/etc/kubernetes/pki/apiserver/tls.key
+      --kubelet-https=true
+      --kubelet-client-certificate=/etc/kubernetes/pki/apiserver/tls.crt
+      --kubelet-client-key=/etc/kubernetes/pki/apiserver/tls.key
+      --enable-bootstrap-token-auth=true
+      --etcd-servers=https://etcd-0.etcd:2379
+      --etcd-cafile=/etc/kubernetes/pki/root/tls.crt
+      --etcd-certfile=/etc/kubernetes/pki/apiserver/tls.crt
+      --etcd-keyfile=/etc/kubernetes/pki/apiserver/tls.key
+      --service-account-key-file=/etc/kubernetes/pki/service-account/tls.key
+      --service-cluster-ip-range=10.32.0.0/16
+      --service-node-port-range=30000-32767
+      --authorization-mode=Node,RBAC
+      --runtime-config=api/all
+      --enable-admission-plugins=NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
+      --apiserver-count=1
+      --endpoint-reconciler-type=master-count
+      --enable-aggregator-routing=true
+      --requestheader-client-ca-file=/etc/kubernetes/pki/root/tls.crt
+      --requestheader-allowed-names=front-proxy-client
+      --requestheader-username-headers=X-Remote-User
+      --requestheader-group-headers=X-Remote-Group
+      --requestheader-extra-headers-prefix=X-Remote-Extra-
+      --proxy-client-key-file=/etc/kubernetes/pki/frontproxy/tls.key
+      --proxy-client-cert-file=/etc/kubernetes/pki/frontproxy/tls.crt
+      --v=2
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Liveness:       tcp-socket :6443 delay=15s timeout=15s period=10s #success=1 #failure=8
+    Readiness:      http-get https://:6443/healthz delay=5s timeout=30s period=2s #success=1 #failure=8
+    Environment:    &lt;none&gt;
+    Mounts:
+      /etc/kubernetes/pki/apiserver from apiserver-ca (ro)
+      /etc/kubernetes/pki/frontproxy from front-proxy-ca (ro)
+      /etc/kubernetes/pki/root from root-ca (ro)
+      /etc/kubernetes/pki/service-account from serviceaccount-rsa (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-8xcwl (ro)
+Conditions:
+  Type              Status
+  Initialized       True
+  Ready             False
+  ContainersReady   False
+  PodScheduled      True
+Volumes:
+  apiserver-ca:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  apiserver-ca
+    Optional:    false
+  root-ca:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  root-ca
+    Optional:    false
+  front-proxy-ca:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  front-proxy-ca
+    Optional:    false
+  serviceaccount-rsa:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  serviceaccount-rsa
+    Optional:    false
+  default-token-8xcwl:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-8xcwl
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  &lt;none&gt;
+Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason       Age                  From               Message
+  ----     ------       ----                 ----               -------
+  Normal   Scheduled    3m29s                default-scheduler  Successfully assigned default-56325d-vc-sample-1/apiserver-0 to node1
+  Warning  FailedMount  86s                  kubelet            Unable to attach or mount volumes: unmounted volumes=[front-proxy-ca], unattached volumes=[default-token-8xcwl apiserver-ca front-proxy-ca root-ca serviceaccount-rsa]: timed out waiting for the condition
+  Warning  FailedMount  81s (x9 over 3m29s)  kubelet            MountVolume.SetUp failed for volume &quot;front-proxy-ca&quot; : secret &quot;front-proxy-ca&quot; not found
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#f92672>[</span>root@master ~<span style=color:#f92672>]</span><span style=color:#75715e># kubectl get all -n vc-manager</span>
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/vc-manager-76c5878465-25s5m   1/1     Running   <span style=color:#ae81ff>0</span>          67m
+pod/vc-syncer-55c5bc5898-47vzz    1/1     Running   <span style=color:#ae81ff>0</span>          67m
+pod/vn-agent-t7wg9                1/1     Running   <span style=color:#ae81ff>0</span>          67m
+
+NAME                                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT<span style=color:#f92672>(</span>S<span style=color:#f92672>)</span>    AGE
+service/virtualcluster-webhook-service   ClusterIP   10.10.180.101   &lt;none&gt;        9443/TCP   65m
+
+NAME                      DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/vn-agent   <span style=color:#ae81ff>1</span>         <span style=color:#ae81ff>1</span>         <span style=color:#ae81ff>1</span>       <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           &lt;none&gt;          67m
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/vc-manager   1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           67m
+deployment.apps/vc-syncer    1/1     <span style=color:#ae81ff>1</span>            <span style=color:#ae81ff>1</span>           67m
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/vc-manager-76c5878465   <span style=color:#ae81ff>1</span>         <span style=color:#ae81ff>1</span>         <span style=color:#ae81ff>1</span>       67m
+replicaset.apps/vc-syncer-55c5bc5898    <span style=color:#ae81ff>1</span>         <span style=color:#ae81ff>1</span>         <span style=color:#ae81ff>1</span>       67m
+</code></pre></div><h2 id=karmada>
+Karmada
+<a class=anchor href=#karmada>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#f92672>[</span>root@alicloud-node karmada<span style=color:#f92672>]</span><span style=color:#75715e># hack/local-up-karmada.sh</span>
+kind not exists, will install kind v0.11.1
+Installing <span style=color:#e6db74>&#39;kind v0.11.1&#39;</span> <span style=color:#66d9ef>for</span> you
+which: no kind in <span style=color:#f92672>(</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/golang/bin:/root/bin<span style=color:#f92672>)</span>
+Installing <span style=color:#e6db74>&#39;kubectl v1.18.0&#39;</span> <span style=color:#66d9ef>for</span> you
+Preparing kindClusterConfig in path: /tmp/tmp.nKvTwSYbZE
+Creating cluster karmada-host
+Creating cluster member1
+Creating cluster member2
+Creating cluster member3
+make: Entering directory <span style=color:#e6db74>&#39;/root/Develop/gopath/src/karmada&#39;</span>
+CGO_ENABLED<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> GOOS<span style=color:#f92672>=</span>linux go build <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>	-ldflags <span style=color:#e6db74>&#34;-X github.com/karmada-io/karmada/pkg/version.gitVersion=v0.9.0-115-g1f87ca95 -X github.com/karmada-io/karmada/pkg/version.gitCommit=1f87ca9519957e76fccb660079bfc44d58a09286 -X github.com/karmada-io/karmada/pkg/version.gitTreeState=&#34;</span>clean<span style=color:#e6db74>&#34; -X github.com/karmada-io/karmada/pkg/version.buildDate=2021-12-24T07:38:15Z&#34;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>	-o karmada-controller-manager <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>	cmd/controller-manager/controller-manager.go
+VERSION<span style=color:#f92672>=</span>latest hack/docker.sh karmada-controller-manager
+Sending build context to Docker daemon  160.8MB
+Step 1/4 : FROM alpine:3.7
+3.7: Pulling from library/alpine
+5d20c808ce19: Pull complete
+Digest: sha256:8421d9a84432575381bfabd248f1eb56f3aa21d9d7cd2511583c68c9b7511d10
+Status: Downloaded newer image <span style=color:#66d9ef>for</span> alpine:3.7
+ ---&gt; 6d1ef012b567
+Step 2/4 : RUN apk add --no-cache ca-certificates
+ ---&gt; Running in 21581f969cf1
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.7/main/x86_64/APKINDEX.tar.gz
+WARNING: Ignoring http://dl-cdn.alpinelinux.org/alpine/v3.7/main/x86_64/APKINDEX.tar.gz: operation timed out
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.7/community/x86_64/APKINDEX.tar.gz
+ERROR: unsatisfiable constraints:
+  ca-certificates <span style=color:#f92672>(</span>missing<span style=color:#f92672>)</span>:
+    required by: world<span style=color:#f92672>[</span>ca-certificates<span style=color:#f92672>]</span>
+The command <span style=color:#e6db74>&#39;/bin/sh -c apk add --no-cache ca-certificates&#39;</span> returned a non-zero code: <span style=color:#ae81ff>1</span>
+make: *** <span style=color:#f92672>[</span>Makefile:104: image-karmada-controller-manager<span style=color:#f92672>]</span> Error <span style=color:#ae81ff>1</span>
+make: Leaving directory <span style=color:#e6db74>&#39;/root/Develop/gopath/src/karmada&#39;</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#f92672>[</span>root@alicloud-node karmada<span style=color:#f92672>]</span><span style=color:#75715e># hack/local-up-karmada.sh</span>
+kind not exists, will install kind v0.11.1
+Installing <span style=color:#e6db74>&#39;kind v0.11.1&#39;</span> <span style=color:#66d9ef>for</span> you
+which: no kind in <span style=color:#f92672>(</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/golang/bin:/root/bin<span style=color:#f92672>)</span>
+Installing <span style=color:#e6db74>&#39;kubectl v1.18.0&#39;</span> <span style=color:#66d9ef>for</span> you
+Preparing kindClusterConfig in path: /tmp/tmp.axBYDaONXq
+Creating cluster karmada-host
+Creating cluster member1
+Creating cluster member2
+Creating cluster member3
+make: Entering directory <span style=color:#e6db74>&#39;/root/Develop/gopath/src/karmada&#39;</span>
+VERSION<span style=color:#f92672>=</span>latest hack/docker.sh karmada-controller-manager
+Sending build context to Docker daemon  399.8MB
+Step 1/4 : FROM alpine:3.7
+ ---&gt; 6d1ef012b567
+Step 2/4 : RUN apk add --no-cache ca-certificates
+ ---&gt; Using cache
+ ---&gt; 987b2c96f3e3
+Step 3/4 : ADD karmada-controller-manager /bin/
+ ---&gt; Using cache
+ ---&gt; 4c8132a35cf3
+Step 4/4 : CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/bin/karmada-controller-manager&#34;</span><span style=color:#f92672>]</span>
+ ---&gt; Using cache
+ ---&gt; 50d6149c965b
+Successfully built 50d6149c965b
+Successfully tagged swr.ap-southeast-1.myhuaweicloud.com/karmada/karmada-controller-manager:latest
+VERSION<span style=color:#f92672>=</span>latest hack/docker.sh karmada-scheduler
+Sending build context to Docker daemon  399.8MB
+Step 1/4 : FROM alpine:3.7
+ ---&gt; 6d1ef012b567
+Step 2/4 : RUN apk add --no-cache ca-certificates
+ ---&gt; Using cache
+ ---&gt; 987b2c96f3e3
+Step 3/4 : ADD karmada-scheduler /bin/
+ ---&gt; Using cache
+ ---&gt; fe3334c67cb4
+Step 4/4 : CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/bin/karmada-scheduler&#34;</span><span style=color:#f92672>]</span>
+ ---&gt; Using cache
+ ---&gt; 47c9db1b4870
+Successfully built 47c9db1b4870
+Successfully tagged swr.ap-southeast-1.myhuaweicloud.com/karmada/karmada-scheduler:latest
+VERSION<span style=color:#f92672>=</span>latest hack/docker.sh karmada-webhook
+Sending build context to Docker daemon  399.8MB
+Step 1/4 : FROM alpine:3.7
+ ---&gt; 6d1ef012b567
+Step 2/4 : RUN apk add --no-cache ca-certificates
+ ---&gt; Using cache
+ ---&gt; 987b2c96f3e3
+Step 3/4 : ADD karmada-webhook /bin/
+ ---&gt; Using cache
+ ---&gt; 836cbce55275
+Step 4/4 : CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/bin/karmada-webhook&#34;</span><span style=color:#f92672>]</span>
+ ---&gt; Using cache
+ ---&gt; baa6f4c411c2
+Successfully built baa6f4c411c2
+Successfully tagged swr.ap-southeast-1.myhuaweicloud.com/karmada/karmada-webhook:latest
+VERSION<span style=color:#f92672>=</span>latest hack/docker.sh karmada-agent
+Sending build context to Docker daemon  399.8MB
+Step 1/4 : FROM alpine:3.7
+ ---&gt; 6d1ef012b567
+Step 2/4 : RUN apk add --no-cache ca-certificates
+ ---&gt; Using cache
+ ---&gt; 987b2c96f3e3
+Step 3/4 : ADD karmada-agent /bin/
+ ---&gt; Using cache
+ ---&gt; 857b355f9fab
+Step 4/4 : CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/bin/karmada-agent&#34;</span><span style=color:#f92672>]</span>
+ ---&gt; Using cache
+ ---&gt; 1686da0562fc
+Successfully built 1686da0562fc
+Successfully tagged swr.ap-southeast-1.myhuaweicloud.com/karmada/karmada-agent:latest
+VERSION<span style=color:#f92672>=</span>latest hack/docker.sh karmada-scheduler-estimator
+Sending build context to Docker daemon  399.8MB
+Step 1/4 : FROM alpine:3.7
+ ---&gt; 6d1ef012b567
+Step 2/4 : RUN apk add --no-cache ca-certificates
+ ---&gt; Using cache
+ ---&gt; 987b2c96f3e3
+Step 3/4 : ADD karmada-scheduler-estimator /bin/
+ ---&gt; Using cache
+ ---&gt; aea9856d3e77
+Step 4/4 : CMD <span style=color:#f92672>[</span><span style=color:#e6db74>&#34;/bin/karmada-scheduler-estimator&#34;</span><span style=color:#f92672>]</span>
+ ---&gt; Using cache
+ ---&gt; af44d54da19a
+Successfully built af44d54da19a
+Successfully tagged swr.ap-southeast-1.myhuaweicloud.com/karmada/karmada-scheduler-estimator:latest
+make: Leaving directory <span style=color:#e6db74>&#39;/root/Develop/gopath/src/karmada&#39;</span>
+Waiting <span style=color:#66d9ef>for</span> the host clusters to be ready...
+Waiting <span style=color:#66d9ef>for</span> kubeconfig file /root/.kube/karmada.config and clusters karmada-host to be ready...
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#yurtctl-convert错误>yurtctl convert错误</a></li>
+<li><a href=#vcluster>VCluster</a></li>
+<li><a href=#karmada>Karmada</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
