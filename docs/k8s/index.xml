@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note Book</title><link>https://eightzero.site/notebook/docs/k8s/</link><description>Recent content on Note Book</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://eightzero.site/notebook/docs/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>自动补全 # source &amp;lt;(kubectl completion bash) 常用举例 # 生成pod
-kubectl run pod --image=nginx --restart=Never --requests= 生成job
-kubectl run job --image=nginx --restart=OnFailure Copy 生成deploy
-kubectl run deploy --image=nginx --replicas=2 Copy 生成svc
-kubectl expose deployment sd2 --type=ClusterIP --target-port=80 --name=sd2 Copy 生成名称空间
-kubectl create ns ns Copy 生成configmap
-kubectl create configmap db2 --from-literal=nt=nt Copy 查看 # 查看所有namespace的pods运行情况
-kubectl get pods --all-namespaces Copy 查看具体pods，记得后边跟namespace名字哦
-kubectl get pods kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system Copy 查看pods具体信息</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note Book</title><link>https://eightzero.site/notebook/docs/k8s/</link><description>Recent content on Note Book</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://eightzero.site/notebook/docs/k8s/index.xml" rel="self" type="application/rss+xml"/></channel></rss>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Introduction on Note Book</title><link>https://eightzero.site/notebook/</link><description>Recent content in Introduction on Note Book</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://eightzero.site/notebook/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/</guid><description>NodePort部署 # wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml vim recommended.yaml kind: Service apiVersion: v1 metadata: labels: k8s-app: kubernetes-dashboard name: kubernetes-dashboard namespace: kubernetes-dashboard spec: type: NodePort //添加类型为NodePort ports: - port: 443 targetPort: 8443 nodePort: 31010 //映射到宿主机的端口为31010 selector: k8s-app: kubernetes-dashboard //执行yaml文件 $ kubectl apply -f recommended.yaml //查看Pod是否运行 $ kubectl get pod -n kubernetes-dashboard //确保该yaml文件提供的pod都正常运行 $ kubectl get svc -n kubernetes-dashboard 访问 # 创建dashboard的管理用户
 $ kubectl create serviceaccount dashboard-admin -n kube-system 绑定用户为集群的管理员
-$ kubectl create clusterrolebinding dashboard-cluster-rolebinding --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin 获取刚刚创建的用户Token</description></item><item><title/><link>https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>自动补全 # source &amp;lt;(kubectl completion bash) 常用举例 # 生成pod
-kubectl run pod --image=nginx --restart=Never --requests= 生成job
-kubectl run job --image=nginx --restart=OnFailure Copy 生成deploy
-kubectl run deploy --image=nginx --replicas=2 Copy 生成svc
-kubectl expose deployment sd2 --type=ClusterIP --target-port=80 --name=sd2 Copy 生成名称空间
-kubectl create ns ns Copy 生成configmap
-kubectl create configmap db2 --from-literal=nt=nt Copy 查看 # 查看所有namespace的pods运行情况
-kubectl get pods --all-namespaces Copy 查看具体pods，记得后边跟namespace名字哦
-kubectl get pods kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system Copy 查看pods具体信息</description></item><item><title/><link>https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/</guid><description>服务类型权限&amp;mdash;和机器标签绑定
+$ kubectl create clusterrolebinding dashboard-cluster-rolebinding --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin 获取刚刚创建的用户Token</description></item><item><title/><link>https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>自动补全 # source &amp;lt;(kubectl completion bash) 常用举例 # 生成pod # kubectl run pod --image=nginx --restart=Never --requests= 生成job
+kubectl run job --image=nginx --restart=OnFailure 生成deploy
+kubectl run deploy --image=nginx --replicas=2 生成svc
+kubectl expose deployment sd2 --type=ClusterIP --target-port=80 --name=sd2 生成名称空间
+kubectl create ns ns 生成configmap
+kubectl create configmap db2 --from-literal=nt=nt 查看 # 查看所有namespace的pods运行情况
+kubectl get pods --all-namespaces 查看具体pods，记得后边跟namespace名字哦
+kubectl get pods kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看pods具体信息
+kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看集群健康状态</description></item><item><title/><link>https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/</guid><description>服务类型权限&amp;mdash;和机器标签绑定
 api权限
 权限最小原则</description></item><item><title/><link>https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/WasmEdge/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/WasmEdge/</guid><description>服务类型权限&amp;mdash;和机器标签绑定
 api权限
