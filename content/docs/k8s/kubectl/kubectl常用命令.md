@@ -8,7 +8,7 @@ source <(kubectl completion bash)
 
 # 常用举例
 
-### 生成pod
+生成pod
 
 ```bash
 kubectl run pod --image=nginx --restart=Never --requests=
@@ -445,3 +445,4 @@ kubectl cluster-info dump --output-directory=/path/to/cluster-state
 ```bash
 kubectl taint nodes foo dedicated=special-user:NoSchedule
 ```
+
