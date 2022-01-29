@@ -1,0 +1,264 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="1.卸载Node.js #  1.1 通过Homebrew安装 #  brew uninstall node 1.2 通过官方安装包安装 #   删除 /usr/local/lib 下的任意 node 和 node_modules 的文件或目录 删除 /usr/local/include 下的任意 node 和 node_modules 的文件或目录 删除 Home 目录下的任意 node 和 node_modules 的文件或目录 删除 /usr/local/bin 下的任意 node 的可执行文件  以下三种任选其一。测试 nvm、node、npm 三个命令是否还在
+sudo rm -rf /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node.1 /usr/local/lib/dtrace/node.d sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*} sudo rm -rf ~/.npm sudo rm -rf ~/node_modules sudo rm -rf ~/.">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="1.卸载Node.js #  1.1 通过Homebrew安装 #  brew uninstall node 1.2 通过官方安装包安装 #   删除 /usr/local/lib 下的任意 node 和 node_modules 的文件或目录 删除 /usr/local/include 下的任意 node 和 node_modules 的文件或目录 删除 Home 目录下的任意 node 和 node_modules 的文件或目录 删除 /usr/local/bin 下的任意 node 的可执行文件  以下三种任选其一。测试 nvm、node、npm 三个命令是否还在
+sudo rm -rf /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node.1 /usr/local/lib/dtrace/node.d sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*} sudo rm -rf ~/.npm sudo rm -rf ~/node_modules sudo rm -rf ~/.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Node/Mac%E5%AE%89%E8%A3%85NVM/"><meta property="article:section" content="docs">
+<title>Mac安装 Nvm | Note Book</title>
+<link rel=manifest href=/notebook/manifest.json>
+<link rel=icon href=/notebook/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/notebook/book.min.756888afa9a53184830d78878e2118e3ba3b7d893ff39fe99cf3bb91dd816979.css integrity="sha256-dWiIr6mlMYSDDXiHjiEY47o7fYk/85/pnPO7kd2BaXk=" crossorigin=anonymous>
+<script defer src=/notebook/flexsearch.min.js></script>
+<script defer src=/notebook/en.search.min.cb15c4ebf035d12524f62b887420068924c0ee038d3fc7f888bb1959a5aea979.js integrity="sha256-yxXE6/A10SUk9iuIdCAGiSTA7gONP8f4iLsZWaWuqXk=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/notebook/><span>Note Book</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>K8s</span>
+<ul>
+<li>
+<input type=checkbox id=section-8be6731edcdca8ab5f498095f8fe8989 class=toggle>
+<label for=section-8be6731edcdca8ab5f498095f8fe8989 class="flex justify-between">
+<a role=button>Prometheus</a>
+</label>
+<ul>
+</ul>
+</li>
+<li>
+<span>Kubectl</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>Kubectl常用命令</a>
+</li>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle>
+<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between">
+<a role=button>Dashboard</a>
+</label>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/>Dashborad安装</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>边缘计算</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/>Openyurt</a>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/WasmEdge/>Wasm Edge</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>安装部署</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Node/>Node</a>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Node/Mac%E5%AE%89%E8%A3%85NVM/ class=active>Mac安装 Nvm</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>问题集</span>
+<ul>
+<li>
+<span>已解决</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/>Issue</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=https://github.com/eightzero target=_blank rel=noopener>
+Github
+</a>
+</li>
+<li>
+<a href=https://eightzero.site target=_blank rel=noopener>
+博客
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/notebook/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Mac安装 Nvm</strong>
+<label for=toc-control>
+<img src=/notebook/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#1卸载nodejs>1.卸载Node.js</a>
+<ul>
+<li><a href=#11-通过homebrew安装>1.1 通过Homebrew安装</a></li>
+<li><a href=#12-通过官方安装包安装>1.2 通过官方安装包安装</a></li>
+</ul>
+</li>
+<li><a href=#2-安装版本管理nvm>2. 安装版本管理Nvm</a></li>
+<li><a href=#3-通过-nvm-安装管理nodejs>3. 通过 nvm 安装管理Node.js</a></li>
+<li><a href=#4-安装npm包>4. 安装npm包</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=1卸载nodejs>
+1.卸载Node.js
+<a class=anchor href=#1%e5%8d%b8%e8%bd%bdnodejs>#</a>
+</h1>
+<h2 id=11-通过homebrew安装>
+1.1 通过Homebrew安装
+<a class=anchor href=#11-%e9%80%9a%e8%bf%87homebrew%e5%ae%89%e8%a3%85>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>brew uninstall node 
+</code></pre></div><h2 id=12-通过官方安装包安装>
+1.2 通过官方安装包安装
+<a class=anchor href=#12-%e9%80%9a%e8%bf%87%e5%ae%98%e6%96%b9%e5%ae%89%e8%a3%85%e5%8c%85%e5%ae%89%e8%a3%85>#</a>
+</h2>
+<ol>
+<li>删除 <code>/usr/local/lib</code> 下的任意 <code>node</code> 和 <code>node_modules</code> 的文件或目录</li>
+<li>删除 <code>/usr/local/include</code> 下的任意 <code>node</code> 和 <code>node_modules</code> 的文件或目录</li>
+<li>删除 <code>Home</code> 目录下的任意 <code>node</code> 和 <code>node_modules</code> 的文件或目录</li>
+<li>删除 <code>/usr/local/bin</code> 下的任意 <code>node</code> 的可执行文件</li>
+</ol>
+<p>以下三种任选其一。测试 <code>nvm</code>、<code>node</code>、<code>npm</code> 三个命令是否还在</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo rm -rf /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules
+sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node.1 /usr/local/lib/dtrace/node.d
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo rm -rf /usr/local/<span style=color:#f92672>{</span>bin/<span style=color:#f92672>{</span>node,npm<span style=color:#f92672>}</span>,lib/node_modules/npm,lib/node,share/man/*/node.*<span style=color:#f92672>}</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo rm -rf ~/.npm
+sudo rm -rf ~/node_modules
+sudo rm -rf ~/.node-gyp
+sudo rm /usr/local/bin/node
+sudo rm /usr/local/bin/npm
+sudo rm /usr/local/lib/dtrace/node.d
+</code></pre></div><h1 id=2-安装版本管理nvm>
+2. 安装版本管理Nvm
+<a class=anchor href=#2-%e5%ae%89%e8%a3%85%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86nvm>#</a>
+</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>brew install nvm
+</code></pre></div><p>安装完成后，在 <code>~/.bash_profile</code> 或 <code>~/.zshrc</code> 中添加以下内容</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=color:#75715e># Node.js</span>
+source <span style=color:#66d9ef>$(</span>brew --prefix nvm<span style=color:#66d9ef>)</span>/nvm.sh
+</code></pre></div><p>安装完成后，查看是否安装成功</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ nvm --version
+0.39.1
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ nvm list
+</code></pre></div><h1 id=3-通过-nvm-安装管理nodejs>
+3. 通过 nvm 安装管理Node.js
+<a class=anchor href=#3-%e9%80%9a%e8%bf%87-nvm-%e5%ae%89%e8%a3%85%e7%ae%a1%e7%90%86nodejs>#</a>
+</h1>
+<p>安装最新版本node.js</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>nvm install node
+</code></pre></div><p>安装指定版本node.js</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>nvm install 10.22.0
+</code></pre></div><p>列出所有版本</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ nvm list
+-&gt;     v10.22.0
+        v17.4.0
+default -&gt; node <span style=color:#f92672>(</span>-&gt; v17.4.0<span style=color:#f92672>)</span>
+iojs -&gt; N/A <span style=color:#f92672>(</span>default<span style=color:#f92672>)</span>
+unstable -&gt; N/A <span style=color:#f92672>(</span>default<span style=color:#f92672>)</span>
+node -&gt; stable <span style=color:#f92672>(</span>-&gt; v17.4.0<span style=color:#f92672>)</span> <span style=color:#f92672>(</span>default<span style=color:#f92672>)</span>
+stable -&gt; 17.4 <span style=color:#f92672>(</span>-&gt; v17.4.0<span style=color:#f92672>)</span> <span style=color:#f92672>(</span>default<span style=color:#f92672>)</span>
+lts/* -&gt; lts/gallium <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/argon -&gt; v4.9.1 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/boron -&gt; v6.17.1 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/carbon -&gt; v8.17.0 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/dubnium -&gt; v10.24.1 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/erbium -&gt; v12.22.9 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/fermium -&gt; v14.18.3 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+lts/gallium -&gt; v16.13.2 <span style=color:#f92672>(</span>-&gt; N/A<span style=color:#f92672>)</span>
+</code></pre></div><p>显示当前版本</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ nvm current
+v10.22.0
+</code></pre></div><p>切换使用指定的版本node</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>nvm use 17.4.0
+</code></pre></div><h1 id=4-安装npm包>
+4. 安装npm包
+<a class=anchor href=#4-%e5%ae%89%e8%a3%85npm%e5%8c%85>#</a>
+</h1>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>nvm use 10.22.0
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>npm install -g gitbook-cli
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#1卸载nodejs>1.卸载Node.js</a>
+<ul>
+<li><a href=#11-通过homebrew安装>1.1 通过Homebrew安装</a></li>
+<li><a href=#12-通过官方安装包安装>1.2 通过官方安装包安装</a></li>
+</ul>
+</li>
+<li><a href=#2-安装版本管理nvm>2. 安装版本管理Nvm</a></li>
+<li><a href=#3-通过-nvm-安装管理nodejs>3. 通过 nvm 安装管理Node.js</a></li>
+<li><a href=#4-安装npm包>4. 安装npm包</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
