@@ -1,21 +1,29 @@
 <!doctype html><html lang=en dir=ltr>
 <head>
-<meta name=generator content="Hugo 0.92.1">
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="学习笔记 #  Front Matter Options #  --- title: GitLab Workflow with Infrastructure as Code weight: 11 bookHidden: true bookCollapseSection: true bookToc: false bookFlatSection: true ---  bookHidden: if set to true, hides the page from the left navigation bookCollapseSection: if set to true, it only shows this page in the left nav and child pages only appear when navigated to. weight: Sets the order in the left navigation with 1 at the top and 10000 at the bottom.">
+<meta name=description content="Rust VSCode插件 #  1. rust-analyzer #  实时编译和分析Rust代码，提示代码中的错误，并对类型进行标注。也可以使用官方的rust插件取代
+2. rust syntax #  为代码提供语法高亮
+3. crates #  帮助分析当前项目的依赖是否是最新的版本
+4. better toml #  Rust使用toml做项目的配置管理，better toml可以语法高亮，并展示toml文件中的错误
+5. rust test lens #  可以快速运行某个Rust测试
+6. Tabnine #  基于AI的自动补全">
 <meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content="Introduction">
-<meta property="og:description" content>
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://eightzero.site/notebook/">
-<title>Introduction | Note Book</title>
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Rust VSCode插件 #  1. rust-analyzer #  实时编译和分析Rust代码，提示代码中的错误，并对类型进行标注。也可以使用官方的rust插件取代
+2. rust syntax #  为代码提供语法高亮
+3. crates #  帮助分析当前项目的依赖是否是最新的版本
+4. better toml #  Rust使用toml做项目的配置管理，better toml可以语法高亮，并展示toml文件中的错误
+5. rust test lens #  可以快速运行某个Rust测试
+6. Tabnine #  基于AI的自动补全">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://eightzero.site/notebook/docs/Rust/VSCode%E6%8F%92%E4%BB%B6/"><meta property="article:section" content="docs">
+<title>Vscode插件 | Note Book</title>
 <link rel=manifest href=/notebook/manifest.json>
 <link rel=icon href=/notebook/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/notebook/book.min.756888afa9a53184830d78878e2118e3ba3b7d893ff39fe99cf3bb91dd816979.css integrity="sha256-dWiIr6mlMYSDDXiHjiEY47o7fYk/85/pnPO7kd2BaXk=" crossorigin=anonymous>
 <script defer src=/notebook/flexsearch.min.js></script>
 <script defer src=/notebook/en.search.min.0b30aee770eb07e7b930d7b3889f455f2d8773f50cd51358a20801484abc3d27.js integrity="sha256-CzCu53DrB+e5MNeziJ9FXy2Hc/UM1RNYoggBSEq8PSc=" crossorigin=anonymous></script>
-<link rel=alternate type=application/rss+xml href=https://eightzero.site/notebook/index.xml title="Note Book">
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -115,7 +123,7 @@
 <span>Rust</span>
 <ul>
 <li>
-<a href=https://eightzero.site/notebook/docs/Rust/VSCode%E6%8F%92%E4%BB%B6/>Vscode插件</a>
+<a href=https://eightzero.site/notebook/docs/Rust/VSCode%E6%8F%92%E4%BB%B6/ class=active>Vscode插件</a>
 </li>
 </ul>
 </li>
@@ -142,35 +150,66 @@ Github
 <label for=menu-control>
 <img src=/notebook/svg/menu.svg class=book-icon alt=Menu>
 </label>
-<strong>Introduction</strong>
+<strong>Vscode插件</strong>
 <label for=toc-control>
+<img src=/notebook/svg/toc.svg class=book-icon alt="Table of Contents">
 </label>
 </div>
-</header>
-<article class=markdown><h1 id=学习笔记>
-学习笔记
-<a class=anchor href=#%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0>#</a>
-</h1>
-<h2 id=front-matter-options>
-Front Matter Options
-<a class=anchor href=#front-matter-options>#</a>
-</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#a6e22e>---</span>
-<span style=color:#a6e22e>title</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#a6e22e>GitLab</span> <span style=color:#a6e22e>Workflow</span> <span style=color:#a6e22e>with</span> <span style=color:#a6e22e>Infrastructure</span> <span style=color:#a6e22e>as</span> <span style=color:#a6e22e>Code</span>
-<span style=color:#a6e22e>weight</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#ae81ff>11</span>
-<span style=color:#a6e22e>bookHidden</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#66d9ef>true</span>
-<span style=color:#a6e22e>bookCollapseSection</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#66d9ef>true</span>
-<span style=color:#a6e22e>bookToc</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#66d9ef>false</span>
-<span style=color:#a6e22e>bookFlatSection</span><span style=color:#960050;background-color:#1e0010>:</span> <span style=color:#66d9ef>true</span>
-<span style=color:#a6e22e>---</span>
-</code></pre></div><ul>
-<li><code>bookHidden</code>: if set to true, hides the page from the left navigation</li>
-<li><code>bookCollapseSection</code>: if set to true, it only shows this page in the left nav and child pages only appear when navigated to.</li>
-<li><code>weight</code>: Sets the order in the left navigation with 1 at the top and 10000 at the bottom.</li>
-<li><code>title</code>: the text that shows in the left navigation for the title</li>
-<li><code>bookToc</code>: Hides the page-specific table of content (on the right-hand side of the page)</li>
-<li><code>bookFlatSection</code>: If set to true, promotes the pages at this level to the same tier as the _index page.</li>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#rust-vscode插件>Rust VSCode插件</a>
+<ul>
+<li><a href=#1-rust-analyzer>1. rust-analyzer</a></li>
+<li><a href=#2-rust-syntax>2. rust syntax</a></li>
+<li><a href=#3-crates>3. crates</a></li>
+<li><a href=#4-better-toml>4. better toml</a></li>
+<li><a href=#5-rust-test-lens>5. rust test lens</a></li>
+<li><a href=#6-tabnine>6. Tabnine</a></li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h2 id=rust-vscode插件>
+Rust VSCode插件
+<a class=anchor href=#rust-vscode%e6%8f%92%e4%bb%b6>#</a>
+</h2>
+<h3 id=1-rust-analyzer>
+1. rust-analyzer
+<a class=anchor href=#1-rust-analyzer>#</a>
+</h3>
+<p>实时编译和分析Rust代码，提示代码中的错误，并对类型进行标注。也可以使用官方的rust插件取代</p>
+<h3 id=2-rust-syntax>
+2. rust syntax
+<a class=anchor href=#2-rust-syntax>#</a>
+</h3>
+<p>为代码提供语法高亮</p>
+<h3 id=3-crates>
+3. crates
+<a class=anchor href=#3-crates>#</a>
+</h3>
+<p>帮助分析当前项目的依赖是否是最新的版本</p>
+<h3 id=4-better-toml>
+4. better toml
+<a class=anchor href=#4-better-toml>#</a>
+</h3>
+<p>Rust使用toml做项目的配置管理，better toml可以语法高亮，并展示toml文件中的错误</p>
+<h3 id=5-rust-test-lens>
+5. rust test lens
+<a class=anchor href=#5-rust-test-lens>#</a>
+</h3>
+<p>可以快速运行某个Rust测试</p>
+<h3 id=6-tabnine>
+6. Tabnine
+<a class=anchor href=#6-tabnine>#</a>
+</h3>
+<p>基于AI的自动补全</p>
 </article>
 <footer class=book-footer>
 <div class="flex flex-wrap justify-between">
@@ -181,6 +220,28 @@ Front Matter Options
 </div>
 <label for=menu-control class="hidden book-menu-overlay"></label>
 </div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#rust-vscode插件>Rust VSCode插件</a>
+<ul>
+<li><a href=#1-rust-analyzer>1. rust-analyzer</a></li>
+<li><a href=#2-rust-syntax>2. rust syntax</a></li>
+<li><a href=#3-crates>3. crates</a></li>
+<li><a href=#4-better-toml>4. better toml</a></li>
+<li><a href=#5-rust-test-lens>5. rust test lens</a></li>
+<li><a href=#6-tabnine>6. Tabnine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
 </main>
 </body>
 </html>
