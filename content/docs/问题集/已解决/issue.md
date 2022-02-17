@@ -1,4 +1,6 @@
-## 问题1：Metrics Server部署失败
+## Metrics Server部署失败
+
+#### 问题现象
 
 ```shell
 Events:
@@ -12,7 +14,7 @@ Events:
   Warning  Unhealthy  3m54s (x57 over 13m)  kubelet            Readiness probe failed: HTTP probe failed with statuscode: 500
 ```
 
-
+#### 解决方式
 
 修改components.yaml, 添加`--kubelet-insecure-tls`
 
@@ -44,5 +46,56 @@ spec:
         - --kubelet-use-node-status-port
         - --metric-resolution=15s
         - --kubelet-insecure-tls
+```
+
+## Mysql初始化CasbinRule表失败
+
+#### 问题现象
+
+```shell
+$ Error 1071: Specified key was too long; max key length is 3072 bytes
+[14.968ms] [rows:0] CREATE TABLE `casbin_rules` (`id` bigint unsigned AUTO_INCREMENT,`created_at` datetime(3) NULL,`updated_at` datetime(3) NULL,`deleted_at` datetime(3) NULL,`ptype` varchar(512),`v0` varchar(512),`v1` varchar(512),`v2` varchar(512),PRIMARY KEY (`id`),INDEX idx_casbin_rules_deleted_at (`deleted_at`),UNIQUE INDEX unique_index (`ptype`,`v0`,`v1`,`v2`))
+$ Error 1071: Specified key was too long; max key length is 3072 bytes
+
+```
+
+#### 解决方式
+
+使用官方的结构体 `adapter.CasbinRule`而不是自己声明的Casbin Model
+
+
+
+
+
+## swaggo Failed to load API definition 
+
+#### 问题现象
+
+Swagger Failed to load API definition
+
+Fetch error Internal Server Error doc.json
+
+![image-20220217165902474](https://gitee.com/eightzero/pico/raw/master/image-20220217165902474.png)
+
+#### 解决方式
+
+`main.go`中导入`swag init`生成的docs文件夹
+
+```go
+// main.go
+import (
+	_ "yourProject/docs"
+)
+
+// @title Swagger Example API
+// @version 0.0.1
+// @description This is a sample Server pets
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name x-token
+// @BasePath /
+func main() {
+	cmd.StartServer()
+}
 ```
 

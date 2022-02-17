@@ -1,3 +1,13 @@
+
+```go
+global.DB.AutoMigrate(
+   model.SysUser{},
+   model.SvcTypes{},
+   model.CasbinRule{}, ---> adapter.CasbinRule{},
+   model.Machine{},
+)
+```
+
 ## yurtctl convert错误
 
 ```shell
