@@ -1,0 +1,238 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Initdb.sql
+ /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */; /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */; /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */; /*!40101 SET NAMES utf8 */; /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */; /*!40103 SET TIME_ZONE='+00:00' */; /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */; /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */; /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */; /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */; CREATE DATABASE /*!32312 IF NOT EXISTS*/ `nodemanager` /*!40100 DEFAULT CHARACTER SET utf8 */; USE `nodemanager`; -- -- Table structure for table `tb_users` --  DROP TABLE IF EXISTS `tb_users`; /*!">
+<meta name=theme-color content="#FFFFFF">
+<meta name=color-scheme content="light dark"><meta property="og:title" content>
+<meta property="og:description" content="Initdb.sql
+ /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */; /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */; /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */; /*!40101 SET NAMES utf8 */; /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */; /*!40103 SET TIME_ZONE='+00:00' */; /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */; /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */; /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */; /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */; CREATE DATABASE /*!32312 IF NOT EXISTS*/ `nodemanager` /*!40100 DEFAULT CHARACTER SET utf8 */; USE `nodemanager`; -- -- Table structure for table `tb_users` --  DROP TABLE IF EXISTS `tb_users`; /*!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://eightzero.site/notebook/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/"><meta property="article:section" content="docs">
+<title>Db SQL | Note Book</title>
+<link rel=manifest href=/notebook/manifest.json>
+<link rel=icon href=/notebook/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/notebook/book.min.756888afa9a53184830d78878e2118e3ba3b7d893ff39fe99cf3bb91dd816979.css integrity="sha256-dWiIr6mlMYSDDXiHjiEY47o7fYk/85/pnPO7kd2BaXk=" crossorigin=anonymous>
+<script defer src=/notebook/flexsearch.min.js></script>
+<script defer src=/notebook/en.search.min.e3ef3a92dfa99bdcc315ca7524472b0a8a372af6e121f059c9fcb747c2d5bec5.js integrity="sha256-4+86kt+pm9zDFcp1JEcrCoo3KvbhIfBZyfy3R8LVvsU=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/notebook/><span>Note Book</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>K8s</span>
+<ul>
+<li>
+<input type=checkbox id=section-8be6731edcdca8ab5f498095f8fe8989 class=toggle>
+<label for=section-8be6731edcdca8ab5f498095f8fe8989 class="flex justify-between">
+<a role=button>Prometheus</a>
+</label>
+<ul>
+</ul>
+</li>
+<li>
+<span>Kubectl</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>Kubectl常用命令</a>
+</li>
+</ul>
+</li>
+<li>
+<input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle>
+<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between">
+<a role=button>Dashboard</a>
+</label>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/>Dashborad安装</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>边缘计算</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/openyurt/>Openyurt</a>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/WasmEdge/>Wasm Edge</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>安装部署</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Node/>Node</a>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Node/Mac%E5%AE%89%E8%A3%85NVM/>Mac安装 Nvm</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>问题集</span>
+<ul>
+<li>
+<span>已解决</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a>
+</li>
+</ul>
+</li>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/>Issue</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Rust</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/Rust/VSCode%E6%8F%92%E4%BB%B6/>Vscode插件</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>数据库</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/ class=active>Db SQL</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<a href=https://github.com/eightzero target=_blank rel=noopener>
+Github
+</a>
+</li>
+<li>
+<a href=https://eightzero.site target=_blank rel=noopener>
+博客
+</a>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/notebook/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Db SQL</strong>
+<label for=toc-control>
+<img src=/notebook/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents></nav>
+</aside>
+</header>
+<article class=markdown><blockquote>
+<p>Initdb.sql</p>
+</blockquote>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sql data-lang=sql><span style=color:#75715e>/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */</span>;
+<span style=color:#75715e>/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */</span>;
+<span style=color:#75715e>/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */</span>;
+<span style=color:#75715e>/*!40101 SET NAMES utf8 */</span>;
+<span style=color:#75715e>/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */</span>;
+<span style=color:#75715e>/*!40103 SET TIME_ZONE=&#39;+00:00&#39; */</span>;
+<span style=color:#75715e>/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */</span>;
+<span style=color:#75715e>/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */</span>;
+<span style=color:#75715e>/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&#39;NO_AUTO_VALUE_ON_ZERO&#39; */</span>;
+<span style=color:#75715e>/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */</span>;
+
+<span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>DATABASE</span> <span style=color:#75715e>/*!32312 IF NOT EXISTS*/</span> <span style=color:#f92672>`</span>nodemanager<span style=color:#f92672>`</span> <span style=color:#75715e>/*!40100 DEFAULT CHARACTER SET utf8 */</span>;
+
+USE <span style=color:#f92672>`</span>nodemanager<span style=color:#f92672>`</span>;
+
+<span style=color:#75715e>--
+</span><span style=color:#75715e>-- Table structure for table `tb_users`
+</span><span style=color:#75715e>--
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>DROP</span> <span style=color:#66d9ef>TABLE</span> <span style=color:#66d9ef>IF</span> <span style=color:#66d9ef>EXISTS</span> <span style=color:#f92672>`</span>tb_users<span style=color:#f92672>`</span>;
+<span style=color:#75715e>/*!40101 SET @saved_cs_client     = @@character_set_client */</span>;
+<span style=color:#75715e>/*!40101 SET character_set_client = utf8 */</span>;
+<span style=color:#66d9ef>CREATE</span> <span style=color:#66d9ef>TABLE</span> <span style=color:#f92672>`</span>tb_users<span style=color:#f92672>`</span> (
+                            <span style=color:#f92672>`</span>id<span style=color:#f92672>`</span> bigint(<span style=color:#ae81ff>20</span>) unsigned <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span> AUTO_INCREMENT,
+                            <span style=color:#f92672>`</span>username<span style=color:#f92672>`</span> varchar(<span style=color:#ae81ff>255</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
+                            <span style=color:#f92672>`</span>password<span style=color:#f92672>`</span> varchar(<span style=color:#ae81ff>255</span>) <span style=color:#66d9ef>NOT</span> <span style=color:#66d9ef>NULL</span>,
+                            <span style=color:#f92672>`</span>createdAt<span style=color:#f92672>`</span> <span style=color:#66d9ef>timestamp</span> <span style=color:#66d9ef>NULL</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>NULL</span>,
+                            <span style=color:#f92672>`</span>updatedAt<span style=color:#f92672>`</span> <span style=color:#66d9ef>timestamp</span> <span style=color:#66d9ef>NULL</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>NULL</span>,
+                            <span style=color:#f92672>`</span>deletedAt<span style=color:#f92672>`</span> <span style=color:#66d9ef>timestamp</span> <span style=color:#66d9ef>NULL</span> <span style=color:#66d9ef>DEFAULT</span> <span style=color:#66d9ef>NULL</span>,
+                            <span style=color:#66d9ef>PRIMARY</span> <span style=color:#66d9ef>KEY</span> (<span style=color:#f92672>`</span>id<span style=color:#f92672>`</span>),
+                            <span style=color:#66d9ef>UNIQUE</span> <span style=color:#66d9ef>KEY</span> <span style=color:#f92672>`</span>username<span style=color:#f92672>`</span> (<span style=color:#f92672>`</span>username<span style=color:#f92672>`</span>),
+                            <span style=color:#66d9ef>KEY</span> <span style=color:#f92672>`</span>idx_tb_users_deletedAt<span style=color:#f92672>`</span> (<span style=color:#f92672>`</span>deletedAt<span style=color:#f92672>`</span>)
+) ENGINE<span style=color:#f92672>=</span>MyISAM AUTO_INCREMENT<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> <span style=color:#66d9ef>DEFAULT</span> CHARSET<span style=color:#f92672>=</span>utf8;
+<span style=color:#75715e>/*!40101 SET character_set_client = @saved_cs_client */</span>;
+
+<span style=color:#75715e>--
+</span><span style=color:#75715e>-- Dumping data for table `tb_users`
+</span><span style=color:#75715e>--
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>LOCK</span> TABLES <span style=color:#f92672>`</span>tb_users<span style=color:#f92672>`</span> <span style=color:#66d9ef>WRITE</span>;
+<span style=color:#75715e>/*!40000 ALTER TABLE `tb_users` DISABLE KEYS */</span>;
+<span style=color:#66d9ef>INSERT</span> <span style=color:#66d9ef>INTO</span> <span style=color:#f92672>`</span>tb_users<span style=color:#f92672>`</span> <span style=color:#66d9ef>VALUES</span> (<span style=color:#ae81ff>0</span>,<span style=color:#e6db74>&#39;admin&#39;</span>,<span style=color:#e6db74>&#39;$2a$10$veGcArz47VGj7l9xN7g2iuT9TF21jLI1YGXarGzvARNdnt4inC9PG&#39;</span>,<span style=color:#e6db74>&#39;2022-01-27 16:25:33&#39;</span>,<span style=color:#e6db74>&#39;2022-01-27 16:25:33&#39;</span>,<span style=color:#66d9ef>NULL</span>);
+<span style=color:#75715e>/*!40000 ALTER TABLE `tb_users` ENABLE KEYS */</span>;
+UNLOCK TABLES;
+<span style=color:#75715e>/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */</span>;
+
+<span style=color:#75715e>/*!40101 SET SQL_MODE=@OLD_SQL_MODE */</span>;
+<span style=color:#75715e>/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */</span>;
+<span style=color:#75715e>/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */</span>;
+<span style=color:#75715e>/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */</span>;
+<span style=color:#75715e>/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */</span>;
+<span style=color:#75715e>/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */</span>;
+<span style=color:#75715e>/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */</span>;
+
+<span style=color:#75715e>-- Dump completed on 2018-05-28  0:25:41
+</span><span style=color:#75715e></span>
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents></nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

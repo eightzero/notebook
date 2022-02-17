@@ -2,10 +2,10 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="yurtctl convert错误 #  [root@master ~]# yurtctl convert --provider kubeadm --kubeadm-conf-path /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master I1201 02:01:31.538410 42272 convert.go:318] mark master as the cloud-node I1201 02:02:51.677158 42272 util.go:543] servant job(yurtctl-disable-node-controller-master) has succeeded I1201 02:02:51.677200 42272 convert.go:343] complete disabling node-controller I1201 02:02:51.678398 42272 convert.go:443] kube-public/cluster-info configmap already exists, skip to prepare it I1201 02:02:51.690122 42272 convert.go:408] deploying the yurt-hub and resetting the kubelet service on edge nodes... E1201 02:04:51.694906 42272 util.go:540] fail to run servant job(yurtctl-servant-convert-node1): wait for job to be complete timeout I1201 02:04:51.">
+<meta name=description content="global.DB.AutoMigrate( model.SysUser{}, model.SvcTypes{}, model.CasbinRule{}, ---> adapter.CasbinRule{}, model.Machine{}, ) yurtctl convert错误 #  [root@master ~]# yurtctl convert --provider kubeadm --kubeadm-conf-path /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master I1201 02:01:31.538410 42272 convert.go:318] mark master as the cloud-node I1201 02:02:51.677158 42272 util.go:543] servant job(yurtctl-disable-node-controller-master) has succeeded I1201 02:02:51.677200 42272 convert.go:343] complete disabling node-controller I1201 02:02:51.678398 42272 convert.go:443] kube-public/cluster-info configmap already exists, skip to prepare it I1201 02:02:51.690122 42272 convert.go:408] deploying the yurt-hub and resetting the kubelet service on edge nodes.">
 <meta name=theme-color content="#FFFFFF">
 <meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="yurtctl convert错误 #  [root@master ~]# yurtctl convert --provider kubeadm --kubeadm-conf-path /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master I1201 02:01:31.538410 42272 convert.go:318] mark master as the cloud-node I1201 02:02:51.677158 42272 util.go:543] servant job(yurtctl-disable-node-controller-master) has succeeded I1201 02:02:51.677200 42272 convert.go:343] complete disabling node-controller I1201 02:02:51.678398 42272 convert.go:443] kube-public/cluster-info configmap already exists, skip to prepare it I1201 02:02:51.690122 42272 convert.go:408] deploying the yurt-hub and resetting the kubelet service on edge nodes... E1201 02:04:51.694906 42272 util.go:540] fail to run servant job(yurtctl-servant-convert-node1): wait for job to be complete timeout I1201 02:04:51.">
+<meta property="og:description" content="global.DB.AutoMigrate( model.SysUser{}, model.SvcTypes{}, model.CasbinRule{}, ---> adapter.CasbinRule{}, model.Machine{}, ) yurtctl convert错误 #  [root@master ~]# yurtctl convert --provider kubeadm --kubeadm-conf-path /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf --cloud-nodes master I1201 02:01:31.538410 42272 convert.go:318] mark master as the cloud-node I1201 02:02:51.677158 42272 util.go:543] servant job(yurtctl-disable-node-controller-master) has succeeded I1201 02:02:51.677200 42272 convert.go:343] complete disabling node-controller I1201 02:02:51.678398 42272 convert.go:443] kube-public/cluster-info configmap already exists, skip to prepare it I1201 02:02:51.690122 42272 convert.go:408] deploying the yurt-hub and resetting the kubelet service on edge nodes.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/"><meta property="article:section" content="docs">
 <title>Issue | Note Book</title>
@@ -13,7 +13,7 @@
 <link rel=icon href=/notebook/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/notebook/book.min.756888afa9a53184830d78878e2118e3ba3b7d893ff39fe99cf3bb91dd816979.css integrity="sha256-dWiIr6mlMYSDDXiHjiEY47o7fYk/85/pnPO7kd2BaXk=" crossorigin=anonymous>
 <script defer src=/notebook/flexsearch.min.js></script>
-<script defer src=/notebook/en.search.min.0b30aee770eb07e7b930d7b3889f455f2d8773f50cd51358a20801484abc3d27.js integrity="sha256-CzCu53DrB+e5MNeziJ9FXy2Hc/UM1RNYoggBSEq8PSc=" crossorigin=anonymous></script>
+<script defer src=/notebook/en.search.min.e3ef3a92dfa99bdcc315ca7524472b0a8a372af6e121f059c9fcb747c2d5bec5.js integrity="sha256-4+86kt+pm9zDFcp1JEcrCoo3KvbhIfBZyfy3R8LVvsU=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -117,6 +117,14 @@
 </li>
 </ul>
 </li>
+<li class=book-section-flat>
+<span>数据库</span>
+<ul>
+<li>
+<a href=https://eightzero.site/notebook/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/>Db SQL</a>
+</li>
+</ul>
+</li>
 </ul>
 <ul>
 <li>
@@ -159,7 +167,13 @@ Github
 </nav>
 </aside>
 </header>
-<article class=markdown><h2 id=yurtctl-convert错误>
+<article class=markdown><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#a6e22e>global</span>.<span style=color:#a6e22e>DB</span>.<span style=color:#a6e22e>AutoMigrate</span>(
+   <span style=color:#a6e22e>model</span>.<span style=color:#a6e22e>SysUser</span>{},
+   <span style=color:#a6e22e>model</span>.<span style=color:#a6e22e>SvcTypes</span>{},
+   <span style=color:#a6e22e>model</span>.<span style=color:#a6e22e>CasbinRule</span>{}, <span style=color:#f92672>---</span>&gt; <span style=color:#a6e22e>adapter</span>.<span style=color:#a6e22e>CasbinRule</span>{},
+   <span style=color:#a6e22e>model</span>.<span style=color:#a6e22e>Machine</span>{},
+)
+</code></pre></div><h2 id=yurtctl-convert错误>
 yurtctl convert错误
 <a class=anchor href=#yurtctl-convert%e9%94%99%e8%af%af>#</a>
 </h2>
