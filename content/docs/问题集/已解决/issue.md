@@ -1,6 +1,6 @@
-## Metrics Server部署失败
+# Metrics Server部署失败
 
-#### 问题现象
+## 问题现象
 
 ```shell
 Events:
@@ -14,7 +14,7 @@ Events:
   Warning  Unhealthy  3m54s (x57 over 13m)  kubelet            Readiness probe failed: HTTP probe failed with statuscode: 500
 ```
 
-#### 解决方式
+## 解决方式
 
 修改components.yaml, 添加`--kubelet-insecure-tls`
 
@@ -48,9 +48,9 @@ spec:
         - --kubelet-insecure-tls
 ```
 
-## Mysql初始化CasbinRule表失败
+# Mysql初始化CasbinRule表失败
 
-#### 问题现象
+## 问题现象
 
 ```shell
 $ Error 1071: Specified key was too long; max key length is 3072 bytes
@@ -59,7 +59,7 @@ $ Error 1071: Specified key was too long; max key length is 3072 bytes
 
 ```
 
-#### 解决方式
+## 解决方式
 
 使用官方的结构体 `adapter.CasbinRule`而不是自己声明的Casbin Model
 
@@ -67,9 +67,9 @@ $ Error 1071: Specified key was too long; max key length is 3072 bytes
 
 
 
-## swaggo Failed to load API definition 
+# Swaggo Failed to load API definition 
 
-#### 问题现象
+## 问题现象
 
 Swagger Failed to load API definition
 
@@ -77,7 +77,7 @@ Fetch error Internal Server Error doc.json
 
 ![image-20220217165902474](https://gitee.com/eightzero/pico/raw/master/image-20220217165902474.png)
 
-#### 解决方式
+## 解决方式
 
 `main.go`中导入`swag init`生成的docs文件夹
 
@@ -97,5 +97,27 @@ import (
 func main() {
 	cmd.StartServer()
 }
+```
+
+
+
+# docker build fail
+
+## 现象
+
+```sh
+  => [builder 4/5] RUN go mod download                                                                              139.6s
+ => ERROR [builder 5/5] RUN GOOS=linux GOARCH=amd64 go build .                                                      86.1s
+------    
+ > [builder 5/5] RUN GOOS=linux GOARCH=amd64 go build .:                                                                                                                                   
+#12 72.17 cgo: C compiler "gcc" not found: exec: "gcc": executable file not found in $PATH
+```
+
+## 解决方式
+
+`Dockerfile`中加入以下内容：
+
+```dockerfile
+RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 ```
 
