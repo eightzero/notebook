@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note Book</title><link>https://eightzero.site/notebook/docs/Rust/</link><description>Recent content on Note Book</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><atom:link href="https://eightzero.site/notebook/docs/Rust/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://eightzero.site/notebook/docs/Rust/VSCode%E6%8F%92%E4%BB%B6/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://eightzero.site/notebook/docs/Rust/VSCode%E6%8F%92%E4%BB%B6/</guid><description>Rust VSCode插件 # 1. rust-analyzer # 实时编译和分析Rust代码，提示代码中的错误，并对类型进行标注。也可以使用官方的rust插件取代
-2. rust syntax # 为代码提供语法高亮
-3. crates # 帮助分析当前项目的依赖是否是最新的版本
-4. better toml # Rust使用toml做项目的配置管理，better toml可以语法高亮，并展示toml文件中的错误
-5. rust test lens # 可以快速运行某个Rust测试
-6. Tabnine # 基于AI的自动补全</description></item></channel></rss>
