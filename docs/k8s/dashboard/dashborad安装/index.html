@@ -1,262 +1,38 @@
-<!doctype html><html lang=en dir=ltr>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="NodePort部署 #  wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml vim recommended.yaml kind: Service apiVersion: v1 metadata: labels: k8s-app: kubernetes-dashboard name: kubernetes-dashboard namespace: kubernetes-dashboard spec: type: NodePort //添加类型为NodePort ports: - port: 443 targetPort: 8443 nodePort: 31010 //映射到宿主机的端口为31010 selector: k8s-app: kubernetes-dashboard //执行yaml文件 $ kubectl apply -f recommended.yaml //查看Pod是否运行 $ kubectl get pod -n kubernetes-dashboard //确保该yaml文件提供的pod都正常运行 $ kubectl get svc -n kubernetes-dashboard 访问 #  创建dashboard的管理用户
-$ kubectl create serviceaccount dashboard-admin -n kube-system 绑定用户为集群的管理员
-$ kubectl create clusterrolebinding dashboard-cluster-rolebinding --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin 获取刚刚创建的用户Token">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="NodePort部署 #  wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml vim recommended.yaml kind: Service apiVersion: v1 metadata: labels: k8s-app: kubernetes-dashboard name: kubernetes-dashboard namespace: kubernetes-dashboard spec: type: NodePort //添加类型为NodePort ports: - port: 443 targetPort: 8443 nodePort: 31010 //映射到宿主机的端口为31010 selector: k8s-app: kubernetes-dashboard //执行yaml文件 $ kubectl apply -f recommended.yaml //查看Pod是否运行 $ kubectl get pod -n kubernetes-dashboard //确保该yaml文件提供的pod都正常运行 $ kubectl get svc -n kubernetes-dashboard 访问 #  创建dashboard的管理用户
-$ kubectl create serviceaccount dashboard-admin -n kube-system 绑定用户为集群的管理员
-$ kubectl create clusterrolebinding dashboard-cluster-rolebinding --clusterrole=cluster-admin --serviceaccount=kube-system:dashboard-admin 获取刚刚创建的用户Token">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/"><meta property="article:section" content="docs">
-<title>Dashborad安装 | Note Book</title>
-<link rel=manifest href=/notebook/manifest.json>
-<link rel=icon href=/notebook/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/notebook/book.min.7f9a546d75725c92a5a94cf5d483fb3335f28d427a81e001a2c1b9ebf6c72668.css integrity="sha256-f5pUbXVyXJKlqUz11IP7MzXyjUJ6geABosG56/bHJmg=" crossorigin=anonymous>
-<script defer src=/notebook/flexsearch.min.js></script>
-<script defer src=/notebook/en.search.min.78a84b7969e4a326754b01105911ec447c910d1b7a8f0ab873713a225d65679a.js integrity="sha256-eKhLeWnkoyZ1SwEQWRHsRHyRDRt6jwq4c3E6Il1lZ5o=" crossorigin=anonymous></script>
-</head>
-<body dir=ltr>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/notebook/><span>Note Book</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li class=book-section-flat>
-<span>K8s</span>
-<ul>
-<li>
-<span>Kubectl</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>Kubectl常用命令</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle checked>
-<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between">
-<a role=button>Dashboard</a>
-</label>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/ class=active>Dashborad安装</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>使用教程</span>
-<ul>
-<li>
-<span>Ebook</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Gitbook使用教程</a>
-</li>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/hugo-book%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Hugo Book使用教程</a>
-</li>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/mdbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Mdbook使用教程</a>
-</li>
-</ul>
-</li>
-<li>
-<span>虚拟机</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/%E8%99%9A%E6%8B%9F%E6%9C%BA/Mac%E4%BD%BF%E7%94%A8vagrant/>Mac使用vagrant</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>安装部署</span>
-<ul>
-<li>
-<span>Centos</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Centos/centos7%E5%AE%89%E8%A3%85python3/>Centos7安装python3</a>
-</li>
-</ul>
-</li>
-<li>
-<span>MAC</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Mac/Mac%E5%AE%89%E8%A3%85%E5%A4%9A%E7%89%88%E6%9C%ACNVM/>Mac安装多版本 Nvm</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Vscode</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/VSCode/VSCode%E5%AE%89%E8%A3%85Rust%E6%8F%92%E4%BB%B6/>Vscode安装 Rust插件</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>问题集</span>
-<ul>
-<li>
-<span>已解决</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/>Issue</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>数据库</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/>Db SQL</a>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href=https://github.com/eightzero target=_blank rel=noopener>
-Github
-</a>
-</li>
-<li>
-<a href=https://eightzero.site target=_blank rel=noopener>
-博客
-</a>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</div>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/notebook/svg/menu.svg class=book-icon alt=Menu>
-</label>
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="NodePort部署 #  wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml vim recommended.yaml kind: Service apiVersion: v1 metadata:  labels:  k8s-app: kubernetes-dashboard  name: kubernetes-dashboard  namespace: kubernetes-dashboard spec:  type: NodePort //添加类型为NodePort  ports:  - port: 443  targetPort: 8443  nodePort: 31010 //映射到宿主机的端口为31010  selector:  k8s-app: kubernetes-dashboard //执行yaml文件 $ kubectl apply -f recommended.yaml  //查看Pod是否运行 $ kubectl get pod -n kubernetes-dashboard  //确保该yaml文件提供的pod都正常运行 $ kubectl get svc -n kubernetes-dashboard 访问 #  创建dashboard的管理用户"><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="NodePort部署 #  wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml vim recommended.yaml kind: Service apiVersion: v1 metadata:  labels:  k8s-app: kubernetes-dashboard  name: kubernetes-dashboard  namespace: kubernetes-dashboard spec:  type: NodePort //添加类型为NodePort  ports:  - port: 443  targetPort: 8443  nodePort: 31010 //映射到宿主机的端口为31010  selector:  k8s-app: kubernetes-dashboard //执行yaml文件 $ kubectl apply -f recommended.yaml  //查看Pod是否运行 $ kubectl get pod -n kubernetes-dashboard  //确保该yaml文件提供的pod都正常运行 $ kubectl get svc -n kubernetes-dashboard 访问 #  创建dashboard的管理用户"><meta property="og:type" content="article"><meta property="og:url" content="https://notebook.eightzero.site/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/"><meta property="article:section" content="docs"><title>Dashborad安装 | Note Book</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.7f9a546d75725c92a5a94cf5d483fb3335f28d427a81e001a2c1b9ebf6c72668.css integrity="sha256-f5pUbXVyXJKlqUz11IP7MzXyjUJ6geABosG56/bHJmg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.ce1741702e1920d188ade1a75678689c403767570ba4bf619c46ed1dd9e6420f.js integrity="sha256-zhdBcC4ZINGIreGnVnhonEA3Z1cLpL9hnEbtHdnmQg8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Note Book</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>K8s</span><ul><li><span>Kubectl</span><ul><li><a href=https://notebook.eightzero.site/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/>Kubectl常用命令</a></li></ul></li><li><input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle checked>
+<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between"><a role=button>Dashboard</a></label><ul><li><a href=https://notebook.eightzero.site/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/ class=active>Dashborad安装</a></li></ul></li></ul></li><li class=book-section-flat><span>使用教程</span><ul><li><span>Ebook</span><ul><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Gitbook使用教程</a></li><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/hugo-book%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Hugo Book使用教程</a></li><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/mdbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Mdbook使用教程</a></li></ul></li><li><span>虚拟机</span><ul><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/%E8%99%9A%E6%8B%9F%E6%9C%BA/Mac%E4%BD%BF%E7%94%A8vagrant/>Mac使用vagrant</a></li></ul></li></ul></li><li class=book-section-flat><span>安装部署</span><ul><li><span>Centos</span><ul><li><a href=https://notebook.eightzero.site/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Centos/centos7%E5%AE%89%E8%A3%85python3/>Centos7安装python3</a></li></ul></li><li><span>MAC</span><ul><li><a href=https://notebook.eightzero.site/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Mac/Mac%E5%AE%89%E8%A3%85%E5%A4%9A%E7%89%88%E6%9C%ACNVM/>Mac安装多版本 Nvm</a></li></ul></li><li><span>Vscode</span><ul><li><a href=https://notebook.eightzero.site/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/VSCode/VSCode%E5%AE%89%E8%A3%85Rust%E6%8F%92%E4%BB%B6/>Vscode安装 Rust插件</a></li></ul></li></ul></li><li class=book-section-flat><span>测试调试</span><ul><li><span>Golang</span><ul><li><a href=https://notebook.eightzero.site/docs/%E6%B5%8B%E8%AF%95%E8%B0%83%E8%AF%95/golang/docker%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/>Docker远程调试</a></li></ul></li></ul></li><li class=book-section-flat><span>问题集</span><ul><li><span>已解决</span><ul><li><a href=https://notebook.eightzero.site/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a></li></ul></li><li><a href=https://notebook.eightzero.site/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a><ul><li><a href=https://notebook.eightzero.site/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/>Issue</a></li></ul></li></ul></li><li class=book-section-flat><span>数据库</span><ul><li><a href=https://notebook.eightzero.site/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/>Db SQL</a></li></ul></li></ul><ul><li><a href=https://github.com/eightzero target=_blank rel=noopener>Github</a></li><li><a href=https://eightzero.site target=_blank rel=noopener>博客</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Dashborad安装</strong>
-<label for=toc-control>
-<img src=/notebook/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#nodeport部署>NodePort部署</a>
-<ul>
-<li><a href=#访问>访问</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h2 id=nodeport部署>
-NodePort部署
-<a class=anchor href=#nodeport%e9%83%a8%e7%bd%b2>#</a>
-</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>vim recommended.yaml
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
-<span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
-<span style=color:#f92672>metadata</span>:
-  <span style=color:#f92672>labels</span>:
-    <span style=color:#f92672>k8s-app</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
-  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
-  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
-<span style=color:#f92672>spec</span>:
-  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>NodePort    //添加类型为NodePort</span>
-  <span style=color:#f92672>ports</span>:
-    - <span style=color:#f92672>port</span>: <span style=color:#ae81ff>443</span>
-      <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>8443</span>
-      <span style=color:#f92672>nodePort</span>: <span style=color:#ae81ff>31010</span>      <span style=color:#ae81ff>//映射到宿主机的端口为31010</span>
-  <span style=color:#f92672>selector</span>:
-    <span style=color:#f92672>k8s-app</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>//执行yaml文件
-$ kubectl apply -f recommended.yaml 
-
-//查看Pod是否运行
-$ kubectl get pod -n kubernetes-dashboard 
-
-//确保该yaml文件提供的pod都正常运行
-$ kubectl get svc -n kubernetes-dashboard 
-</code></pre></div><h3 id=访问>
-访问
-<a class=anchor href=#%e8%ae%bf%e9%97%ae>#</a>
-</h3>
-<p>创建dashboard的管理用户</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ kubectl create serviceaccount dashboard-admin -n kube-system
-</code></pre></div><p>绑定用户为集群的管理员</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ kubectl create clusterrolebinding dashboard-cluster-rolebinding --clusterrole<span style=color:#f92672>=</span>cluster-admin --serviceaccount<span style=color:#f92672>=</span>kube-system:dashboard-admin
-</code></pre></div><p>获取刚刚创建的用户Token</p>
-<pre tabindex=0><code class=language-shjavascript data-lang=shjavascript>kubectl get secrets -n kube-system | grep dashboard-admin
-</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>kubectl</span> <span style=color:#a6e22e>describe</span> <span style=color:#a6e22e>secrets</span> <span style=color:#f92672>-</span><span style=color:#a6e22e>n</span> <span style=color:#a6e22e>kube</span><span style=color:#f92672>-</span><span style=color:#a6e22e>system</span> <span style=color:#a6e22e>dashboard</span><span style=color:#f92672>-</span><span style=color:#a6e22e>admin</span><span style=color:#f92672>-</span><span style=color:#a6e22e>token</span><span style=color:#f92672>-</span><span style=color:#a6e22e>xxx</span>
-</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#ae81ff>eyJhbGciOiJSUzI1NiIsImtpZCI6InVWaHV5OVR4Zkl5bUFtWm1VSV9uWDR1aEhfSkdQQkFadjZPVi0wOVgyVGcifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4tZmo5dG0iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiOTdlNzc2ZDgtMTY3NS00ZjIxLTljMDItNTYxNWM3M2UzZTBlIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.WySaF3V1tHckuK2iF6FNO-ZQeqr_8A-4hdB9DuWFE0apdXOAe1iql1YApOmGRgq4KtbLHEtcLD5hX2_xMb-Qz_gYHcFWdZn-XggAI45TWmSznwMzqQxxlTMnJIV2j7FSwynMOLX2kL6INHLamuT4VjX_R3bVGCrL9rapPLtzRXnf1_UH4ztv7F6N2ye8ALkgotmL-EQCTe_iexHg2DfHpfsjV7oLoByfGcZdFdHr-xNnoowfj-TbF82iX1MEgnFSChkvdaArIZhpQqFIwc_P8CKTcZd4LxejSdlG-_V3BGeyUOP0BIxw2M8rAXeCxljk-bdgECoOYQyQqksfu4EZiA</span>
-</code></pre></div></article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-</div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li>
-<ul>
-<li><a href=#nodeport部署>NodePort部署</a>
-<ul>
-<li><a href=#访问>访问</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#nodeport部署>NodePort部署</a><ul><li><a href=#访问>访问</a></li></ul></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=nodeport部署>NodePort部署
+<a class=anchor href=#nodeport%e9%83%a8%e7%bd%b2>#</a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>vim recommended.yaml
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>kind</span>: <span style=color:#ae81ff>Service</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>apiVersion</span>: <span style=color:#ae81ff>v1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>metadata</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>labels</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>k8s-app</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>name</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>namespace</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>spec</span>:
+</span></span><span style=display:flex><span>  <span style=color:#f92672>type</span>: <span style=color:#ae81ff>NodePort    //添加类型为NodePort</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>ports</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>port</span>: <span style=color:#ae81ff>443</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>targetPort</span>: <span style=color:#ae81ff>8443</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>nodePort</span>: <span style=color:#ae81ff>31010</span>      <span style=color:#ae81ff>//映射到宿主机的端口为31010</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>selector</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>k8s-app</span>: <span style=color:#ae81ff>kubernetes-dashboard</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>//执行yaml文件
+</span></span><span style=display:flex><span>$ kubectl apply -f recommended.yaml 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>//查看Pod是否运行
+</span></span><span style=display:flex><span>$ kubectl get pod -n kubernetes-dashboard 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>//确保该yaml文件提供的pod都正常运行
+</span></span><span style=display:flex><span>$ kubectl get svc -n kubernetes-dashboard 
+</span></span></code></pre></div><h3 id=访问>访问
+<a class=anchor href=#%e8%ae%bf%e9%97%ae>#</a></h3><p>创建dashboard的管理用户</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ kubectl create serviceaccount dashboard-admin -n kube-system
+</span></span></code></pre></div><p>绑定用户为集群的管理员</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ kubectl create clusterrolebinding dashboard-cluster-rolebinding --clusterrole<span style=color:#f92672>=</span>cluster-admin --serviceaccount<span style=color:#f92672>=</span>kube-system:dashboard-admin
+</span></span></code></pre></div><p>获取刚刚创建的用户Token</p><pre tabindex=0><code class=language-shjavascript data-lang=shjavascript>kubectl get secrets -n kube-system | grep dashboard-admin
+</code></pre><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>kubectl</span> <span style=color:#a6e22e>describe</span> <span style=color:#a6e22e>secrets</span> <span style=color:#f92672>-</span><span style=color:#a6e22e>n</span> <span style=color:#a6e22e>kube</span><span style=color:#f92672>-</span><span style=color:#a6e22e>system</span> <span style=color:#a6e22e>dashboard</span><span style=color:#f92672>-</span><span style=color:#a6e22e>admin</span><span style=color:#f92672>-</span><span style=color:#a6e22e>token</span><span style=color:#f92672>-</span><span style=color:#a6e22e>xxx</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ae81ff>eyJhbGciOiJSUzI1NiIsImtpZCI6InVWaHV5OVR4Zkl5bUFtWm1VSV9uWDR1aEhfSkdQQkFadjZPVi0wOVgyVGcifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4tZmo5dG0iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiOTdlNzc2ZDgtMTY3NS00ZjIxLTljMDItNTYxNWM3M2UzZTBlIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.WySaF3V1tHckuK2iF6FNO-ZQeqr_8A-4hdB9DuWFE0apdXOAe1iql1YApOmGRgq4KtbLHEtcLD5hX2_xMb-Qz_gYHcFWdZn-XggAI45TWmSznwMzqQxxlTMnJIV2j7FSwynMOLX2kL6INHLamuT4VjX_R3bVGCrL9rapPLtzRXnf1_UH4ztv7F6N2ye8ALkgotmL-EQCTe_iexHg2DfHpfsjV7oLoByfGcZdFdHr-xNnoowfj-TbF82iX1MEgnFSChkvdaArIZhpQqFIwc_P8CKTcZd4LxejSdlG-_V3BGeyUOP0BIxw2M8rAXeCxljk-bdgECoOYQyQqksfu4EZiA</span>
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#nodeport部署>NodePort部署</a><ul><li><a href=#访问>访问</a></li></ul></li></ul></li></ul></nav></div></aside></main></body></html>

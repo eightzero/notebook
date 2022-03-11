@@ -1,8 +1,4 @@
-<!doctype html><html lang=en dir=ltr>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="自动补全 #  source <(kubectl completion bash) 常用举例 #  生成pod
+<!doctype html><html lang=en dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="自动补全 #  source <(kubectl completion bash) 常用举例 #  生成pod
 kubectl run pod --image=nginx --restart=Never --requests= 生成job
 kubectl run job --image=nginx --restart=OnFailure 生成deploy
 kubectl run deploy --image=nginx --replicas=2 生成svc
@@ -11,10 +7,7 @@ kubectl create ns ns 生成configmap
 kubectl create configmap db2 --from-literal=nt=nt 查看 #  查看所有namespace的pods运行情况
 kubectl get pods --all-namespaces 查看具体pods，记得后边跟namespace名字哦
 kubectl get pods kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看pods具体信息
-kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看集群健康状态">
-<meta name=theme-color content="#FFFFFF">
-<meta name=color-scheme content="light dark"><meta property="og:title" content>
-<meta property="og:description" content="自动补全 #  source <(kubectl completion bash) 常用举例 #  生成pod
+kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看集群健康状态"><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="自动补全 #  source <(kubectl completion bash) 常用举例 #  生成pod
 kubectl run pod --image=nginx --restart=Never --requests= 生成job
 kubectl run job --image=nginx --restart=OnFailure 生成deploy
 kubectl run deploy --image=nginx --replicas=2 生成svc
@@ -23,402 +16,91 @@ kubectl create ns ns 生成configmap
 kubectl create configmap db2 --from-literal=nt=nt 查看 #  查看所有namespace的pods运行情况
 kubectl get pods --all-namespaces 查看具体pods，记得后边跟namespace名字哦
 kubectl get pods kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看pods具体信息
-kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看集群健康状态">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><meta property="article:section" content="docs">
-<title>Kubectl常用命令 | Note Book</title>
-<link rel=manifest href=/notebook/manifest.json>
-<link rel=icon href=/notebook/favicon.png type=image/x-icon>
-<link rel=stylesheet href=/notebook/book.min.7f9a546d75725c92a5a94cf5d483fb3335f28d427a81e001a2c1b9ebf6c72668.css integrity="sha256-f5pUbXVyXJKlqUz11IP7MzXyjUJ6geABosG56/bHJmg=" crossorigin=anonymous>
-<script defer src=/notebook/flexsearch.min.js></script>
-<script defer src=/notebook/en.search.min.78a84b7969e4a326754b01105911ec447c910d1b7a8f0ab873713a225d65679a.js integrity="sha256-eKhLeWnkoyZ1SwEQWRHsRHyRDRt6jwq4c3E6Il1lZ5o=" crossorigin=anonymous></script>
-</head>
-<body dir=ltr>
-<input type=checkbox class="hidden toggle" id=menu-control>
-<input type=checkbox class="hidden toggle" id=toc-control>
-<main class="container flex">
-<aside class=book-menu>
-<div class=book-menu-content>
-<nav>
-<h2 class=book-brand>
-<a class="flex align-center" href=/notebook/><span>Note Book</span>
-</a>
-</h2>
-<div class=book-search>
-<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
-<div class="book-search-spinner hidden"></div>
-<ul id=book-search-results></ul>
-</div>
-<ul>
-<li class=book-section-flat>
-<span>K8s</span>
-<ul>
-<li>
-<span>Kubectl</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/ class=active>Kubectl常用命令</a>
-</li>
-</ul>
-</li>
-<li>
-<input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle>
-<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between">
-<a role=button>Dashboard</a>
-</label>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/>Dashborad安装</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>使用教程</span>
-<ul>
-<li>
-<span>Ebook</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Gitbook使用教程</a>
-</li>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/hugo-book%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Hugo Book使用教程</a>
-</li>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/mdbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Mdbook使用教程</a>
-</li>
-</ul>
-</li>
-<li>
-<span>虚拟机</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/%E8%99%9A%E6%8B%9F%E6%9C%BA/Mac%E4%BD%BF%E7%94%A8vagrant/>Mac使用vagrant</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>安装部署</span>
-<ul>
-<li>
-<span>Centos</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Centos/centos7%E5%AE%89%E8%A3%85python3/>Centos7安装python3</a>
-</li>
-</ul>
-</li>
-<li>
-<span>MAC</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Mac/Mac%E5%AE%89%E8%A3%85%E5%A4%9A%E7%89%88%E6%9C%ACNVM/>Mac安装多版本 Nvm</a>
-</li>
-</ul>
-</li>
-<li>
-<span>Vscode</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/VSCode/VSCode%E5%AE%89%E8%A3%85Rust%E6%8F%92%E4%BB%B6/>Vscode安装 Rust插件</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>问题集</span>
-<ul>
-<li>
-<span>已解决</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a>
-</li>
-</ul>
-</li>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/>Issue</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class=book-section-flat>
-<span>数据库</span>
-<ul>
-<li>
-<a href=https://eightzero.site/notebook/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/>Db SQL</a>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href=https://github.com/eightzero target=_blank rel=noopener>
-Github
-</a>
-</li>
-<li>
-<a href=https://eightzero.site target=_blank rel=noopener>
-博客
-</a>
-</li>
-</ul>
-</nav>
-<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-</div>
-</aside>
-<div class=book-page>
-<header class=book-header>
-<div class="flex align-center justify-between">
-<label for=menu-control>
-<img src=/notebook/svg/menu.svg class=book-icon alt=Menu>
-</label>
+kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace=kube-system 查看集群健康状态"><meta property="og:type" content="article"><meta property="og:url" content="https://notebook.eightzero.site/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"><meta property="article:section" content="docs"><title>Kubectl常用命令 | Note Book</title><link rel=manifest href=/manifest.json><link rel=icon href=/favicon.png type=image/x-icon><link rel=stylesheet href=/book.min.7f9a546d75725c92a5a94cf5d483fb3335f28d427a81e001a2c1b9ebf6c72668.css integrity="sha256-f5pUbXVyXJKlqUz11IP7MzXyjUJ6geABosG56/bHJmg=" crossorigin=anonymous><script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.ce1741702e1920d188ade1a75678689c403767570ba4bf619c46ed1dd9e6420f.js integrity="sha256-zhdBcC4ZINGIreGnVnhonEA3Z1cLpL9hnEbtHdnmQg8=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/><span>Note Book</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><span>K8s</span><ul><li><span>Kubectl</span><ul><li><a href=https://notebook.eightzero.site/docs/k8s/kubectl/kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/ class=active>Kubectl常用命令</a></li></ul></li><li><input type=checkbox id=section-36ff5d3719129749677e942df3741201 class=toggle>
+<label for=section-36ff5d3719129749677e942df3741201 class="flex justify-between"><a role=button>Dashboard</a></label><ul><li><a href=https://notebook.eightzero.site/docs/k8s/dashboard/dashborad%E5%AE%89%E8%A3%85/>Dashborad安装</a></li></ul></li></ul></li><li class=book-section-flat><span>使用教程</span><ul><li><span>Ebook</span><ul><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/gitbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Gitbook使用教程</a></li><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/hugo-book%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Hugo Book使用教程</a></li><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/ebook/mdbook%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/>Mdbook使用教程</a></li></ul></li><li><span>虚拟机</span><ul><li><a href=https://notebook.eightzero.site/docs/%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/%E8%99%9A%E6%8B%9F%E6%9C%BA/Mac%E4%BD%BF%E7%94%A8vagrant/>Mac使用vagrant</a></li></ul></li></ul></li><li class=book-section-flat><span>安装部署</span><ul><li><span>Centos</span><ul><li><a href=https://notebook.eightzero.site/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Centos/centos7%E5%AE%89%E8%A3%85python3/>Centos7安装python3</a></li></ul></li><li><span>MAC</span><ul><li><a href=https://notebook.eightzero.site/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/Mac/Mac%E5%AE%89%E8%A3%85%E5%A4%9A%E7%89%88%E6%9C%ACNVM/>Mac安装多版本 Nvm</a></li></ul></li><li><span>Vscode</span><ul><li><a href=https://notebook.eightzero.site/docs/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/VSCode/VSCode%E5%AE%89%E8%A3%85Rust%E6%8F%92%E4%BB%B6/>Vscode安装 Rust插件</a></li></ul></li></ul></li><li class=book-section-flat><span>测试调试</span><ul><li><span>Golang</span><ul><li><a href=https://notebook.eightzero.site/docs/%E6%B5%8B%E8%AF%95%E8%B0%83%E8%AF%95/golang/docker%E8%BF%9C%E7%A8%8B%E8%B0%83%E8%AF%95/>Docker远程调试</a></li></ul></li></ul></li><li class=book-section-flat><span>问题集</span><ul><li><span>已解决</span><ul><li><a href=https://notebook.eightzero.site/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%B7%B2%E8%A7%A3%E5%86%B3/issue/>Issue</a></li></ul></li><li><a href=https://notebook.eightzero.site/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/>待确认</a><ul><li><a href=https://notebook.eightzero.site/docs/%E9%97%AE%E9%A2%98%E9%9B%86/%E5%BE%85%E7%A1%AE%E8%AE%A4/ISSUE/>Issue</a></li></ul></li></ul></li><li class=book-section-flat><span>数据库</span><ul><li><a href=https://notebook.eightzero.site/docs/%E6%95%B0%E6%8D%AE%E5%BA%93/db_sql/>Db SQL</a></li></ul></li></ul><ul><li><a href=https://github.com/eightzero target=_blank rel=noopener>Github</a></li><li><a href=https://eightzero.site target=_blank rel=noopener>博客</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Kubectl常用命令</strong>
-<label for=toc-control>
-<img src=/notebook/svg/toc.svg class=book-icon alt="Table of Contents">
-</label>
-</div>
-<aside class="hidden clearfix">
-<nav id=TableOfContents>
-<ul>
-<li><a href=#自动补全>自动补全</a></li>
-<li><a href=#常用举例>常用举例</a></li>
-<li><a href=#查看>查看</a></li>
-<li><a href=#集群>集群</a></li>
-<li><a href=#创建>创建</a></li>
-<li><a href=#更新>更新</a></li>
-<li><a href=#编辑资源>编辑资源</a></li>
-<li><a href=#动态伸缩pod>动态伸缩pod</a></li>
-<li><a href=#删除>删除</a></li>
-<li><a href=#交互>交互</a></li>
-<li><a href=#调度配置>调度配置</a></li>
-</ul>
-</nav>
-</aside>
-</header>
-<article class=markdown><h1 id=自动补全>
-自动补全
-<a class=anchor href=#%e8%87%aa%e5%8a%a8%e8%a1%a5%e5%85%a8>#</a>
-</h1>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>source &lt;<span style=color:#f92672>(</span>kubectl completion bash<span style=color:#f92672>)</span>
-</code></pre></div><h1 id=常用举例>
-常用举例
-<a class=anchor href=#%e5%b8%b8%e7%94%a8%e4%b8%be%e4%be%8b>#</a>
-</h1>
-<p>生成pod</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run pod --image<span style=color:#f92672>=</span>nginx --restart<span style=color:#f92672>=</span>Never --requests<span style=color:#f92672>=</span>
-</code></pre></div><p>生成job</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run job --image<span style=color:#f92672>=</span>nginx --restart<span style=color:#f92672>=</span>OnFailure
-</code></pre></div><p>生成deploy</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run deploy --image<span style=color:#f92672>=</span>nginx  --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>
-</code></pre></div><p>生成svc</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl expose deployment sd2 --type<span style=color:#f92672>=</span>ClusterIP --target-port<span style=color:#f92672>=</span><span style=color:#ae81ff>80</span> --name<span style=color:#f92672>=</span>sd2
-</code></pre></div><p>生成名称空间</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create ns ns
-</code></pre></div><p>生成configmap</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create configmap  db2   --from-literal<span style=color:#f92672>=</span>nt<span style=color:#f92672>=</span>nt
-</code></pre></div><h1 id=查看>
-查看
-<a class=anchor href=#%e6%9f%a5%e7%9c%8b>#</a>
-</h1>
-<p>查看所有namespace的pods运行情况</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get pods --all-namespaces
-</code></pre></div><p>查看具体pods，记得后边跟namespace名字哦</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get pods  kubernetes-dashboard-76479d66bb-nj8wr --namespace<span style=color:#f92672>=</span>kube-system
-</code></pre></div><p>查看pods具体信息</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace<span style=color:#f92672>=</span>kube-system
-</code></pre></div><p>查看集群健康状态</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get cs
-</code></pre></div><p>获取所有deployment</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get deployment --all-namespaces
-</code></pre></div><p>列出该 namespace 中的所有 pod 包括未初始化的</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get pods --include-uninitialized
-</code></pre></div><p>查看deployment()</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get deployment nginx-app
-</code></pre></div><p>查看deployment和servers</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get deploy,services
-</code></pre></div><p>查看pod详情</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl describe pods xxxxpodsname --namespace<span style=color:#f92672>=</span>xxxnamespace
-</code></pre></div><p>查看pod日志</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl logs $POD_NAME
-</code></pre></div><p>查看pod变量</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl exec my-nginx-5j8ok -- printenv | grep SERVICE
-</code></pre></div><h1 id=集群>
-集群
-<a class=anchor href=#%e9%9b%86%e7%be%a4>#</a>
-</h1>
-<p>集群健康情况</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get cs
-</code></pre></div><p>集群核心组件运行情况</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl cluster-info
-</code></pre></div><p>命名空间</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get namespaces
-</code></pre></div><p>版本</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl version
-</code></pre></div><p>api</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl api-versions
-</code></pre></div><p>查看事件</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get events
-</code></pre></div><p>获取全部节点</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl get nodes
-</code></pre></div><p>删除节点</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete node k8s2
-</code></pre></div><h1 id=创建>
-创建
-<a class=anchor href=#%e5%88%9b%e5%bb%ba>#</a>
-</h1>
-<p>创建资源</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create -f ./nginx.yaml
-</code></pre></div><p>创建当前目录下的所有yaml资源</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create -f ./
-</code></pre></div><p>使用多个文件创建资源</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create -f ./nginx1.yaml -f ./mysql2.yaml
-</code></pre></div><p>使用目录下的所有文件夹的yaml来创建资源</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create -f ./dir
-</code></pre></div><p>使用 url 来创建资源</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl create -f https://xxxx/xxx
-</code></pre></div><p>创建带有终端的pod</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run -i --tty busybox --image<span style=color:#f92672>=</span>busybox
-</code></pre></div><p>创建一个nginx实例</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run nginx --image<span style=color:#f92672>=</span>nginx
-</code></pre></div><p>创建deployment</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run mybusybox --image<span style=color:#f92672>=</span>busybox --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>
-</code></pre></div><p>获取 pod 和 svc 的api文档</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl explain pods,svc
-</code></pre></div><h1 id=更新>
-更新
-<a class=anchor href=#%e6%9b%b4%e6%96%b0>#</a>
-</h1>
-<p>滚动更新 pod frontend-v1</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl rolling-update python-v1 -f python-v2.json
-</code></pre></div><p>更新资源名称并更新镜像</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl rolling-update python-v1 python-v2 --image<span style=color:#f92672>=</span>image:v2
-</code></pre></div><p>更新 frontend pod 中的镜像</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl rolling-update python --image<span style=color:#f92672>=</span>image:v2
-</code></pre></div><p>退出已存在的进行中的滚动更新</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl rolling-update python-v1 python-v2 --rollback
-</code></pre></div><p>为 nginx RC 创建svc</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl expose rc nginx --port<span style=color:#f92672>=</span><span style=color:#ae81ff>80</span> --target-port<span style=color:#f92672>=</span><span style=color:#ae81ff>8000</span>
-</code></pre></div><p>添加标签</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl label pods nginx-pod new-label<span style=color:#f92672>=</span>awesome
-</code></pre></div><p>添加注解</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl annotate pods nginx-pod icon-url<span style=color:#f92672>=</span>http://goo.gl/XXBTWq
-</code></pre></div><h1 id=编辑资源>
-编辑资源
-<a class=anchor href=#%e7%bc%96%e8%be%91%e8%b5%84%e6%ba%90>#</a>
-</h1>
-<p>编辑名为 docker-registry 的 service</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl edit svc/docker-registry
-</code></pre></div><h1 id=动态伸缩pod>
-动态伸缩pod
-<a class=anchor href=#%e5%8a%a8%e6%80%81%e4%bc%b8%e7%bc%a9pod>#</a>
-</h1>
-<p>HPA</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl autoscale deployment foo --min<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --max<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>
-</code></pre></div><p>将foo副本集变成3个</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl scale --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> rs/foo
-</code></pre></div><p>变更“foo”中指定的资源数量</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl scale --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> -f foo.yaml
-</code></pre></div><p>将deployment/mysql从2个变成3个</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl scale --current-replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> deployment/mysql
-</code></pre></div><p>变更多个控制器的数量</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl scale --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span> rc/foo rc/bar rc/baz
-</code></pre></div><p>查看变更进度</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl rollout status deploy deployment/mysql
-</code></pre></div><h1 id=删除>
-删除
-<a class=anchor href=#%e5%88%a0%e9%99%a4>#</a>
-</h1>
-<p>删除 pod.json 文件中定义的类型和名称的 pod</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete -f ./pod.json
-</code></pre></div><p>删除名为“baz”的 pod 和名为“foo”的 service</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete pod,service baz foo
-</code></pre></div><p>删除具有 name=myLabel 标签的 pod 和 serivce</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete pods,services -l name<span style=color:#f92672>=</span>myLabel
-</code></pre></div><p>删除具有 name=myLabel 标签的 pod 和 service，包括尚未初始化的</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete pods,services -l name<span style=color:#f92672>=</span>myLabel --include-uninitialized
-</code></pre></div><p>删除 my-ns namespace下的所有 pod 和 serivce，包括尚未初始化的</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl -n my-ns delete po,svc --all
-</code></pre></div><p>强制删除</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl delete pods prometheus-7fcfcb9f89-qkkf7 --grace-period<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> --force
-</code></pre></div><h1 id=交互>
-交互
-<a class=anchor href=#%e4%ba%a4%e4%ba%92>#</a>
-</h1>
-<p>输出pod的日志</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl logs nginx-pod
-</code></pre></div><p>输出pod中容器的日志</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl logs nginx-pod -c my-container
-</code></pre></div><p>滚动持续输出pod的日志</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl logs -f nginx-pod
-</code></pre></div><p>滚动持续输出pod中容器的日志</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl logs -f nginx-pod -c my-container
-</code></pre></div><p>交互式 shell 的方式运行 pod</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl run -i --tty busybox --image<span style=color:#f92672>=</span>busybox -- sh
-</code></pre></div><p>连接到运行中的容器</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl attach nginx-pod -i
-</code></pre></div><p>在已存在的pod单容器中执行命令</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl exec nginx-pod -- ls /
-</code></pre></div><p>在已存在的pod中的容器执行命令</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl exec nginx-pod -c my-container -- ls /
-</code></pre></div><p>metrics 显示指定pod和容器的监控指标度量</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl top pod POD_NAME --containers
-</code></pre></div><h1 id=调度配置>
-调度配置
-<a class=anchor href=#%e8%b0%83%e5%ba%a6%e9%85%8d%e7%bd%ae>#</a>
-</h1>
-<p>标记my-node不可调度</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl cordon k8s-node
-</code></pre></div><p>驱逐my-node上的pod以待维护</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl drain k8s-node
-</code></pre></div><p>标记my-node可调度</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl uncordon k8s-node
-</code></pre></div><p>metrics 显示my-node的监控指标度量</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl top node k8s-node
-</code></pre></div><p>将当前集群状态输出到 stdout</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl cluster-info dump
-</code></pre></div><p>将当前集群状态输出到 /path/to/cluster-state</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl cluster-info dump --output-directory<span style=color:#f92672>=</span>/path/to/cluster-state
-</code></pre></div><p>如果该键和影响的污点（taint）已存在，则使用指定的值替换</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>kubectl taint nodes foo dedicated<span style=color:#f92672>=</span>special-user:NoSchedule
-</code></pre></div></article>
-<footer class=book-footer>
-<div class="flex flex-wrap justify-between">
-</div>
-<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
-</footer>
-<div class=book-comments>
-</div>
-<label for=menu-control class="hidden book-menu-overlay"></label>
-</div>
-<aside class=book-toc>
-<div class=book-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#自动补全>自动补全</a></li>
-<li><a href=#常用举例>常用举例</a></li>
-<li><a href=#查看>查看</a></li>
-<li><a href=#集群>集群</a></li>
-<li><a href=#创建>创建</a></li>
-<li><a href=#更新>更新</a></li>
-<li><a href=#编辑资源>编辑资源</a></li>
-<li><a href=#动态伸缩pod>动态伸缩pod</a></li>
-<li><a href=#删除>删除</a></li>
-<li><a href=#交互>交互</a></li>
-<li><a href=#调度配置>调度配置</a></li>
-</ul>
-</nav>
-</div>
-</aside>
-</main>
-</body>
-</html>
+<label for=toc-control><img src=/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#自动补全>自动补全</a></li><li><a href=#常用举例>常用举例</a></li><li><a href=#查看>查看</a></li><li><a href=#集群>集群</a></li><li><a href=#创建>创建</a></li><li><a href=#更新>更新</a></li><li><a href=#编辑资源>编辑资源</a></li><li><a href=#动态伸缩pod>动态伸缩pod</a></li><li><a href=#删除>删除</a></li><li><a href=#交互>交互</a></li><li><a href=#调度配置>调度配置</a></li></ul></nav></aside></header><article class=markdown><h1 id=自动补全>自动补全
+<a class=anchor href=#%e8%87%aa%e5%8a%a8%e8%a1%a5%e5%85%a8>#</a></h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>source &lt;<span style=color:#f92672>(</span>kubectl completion bash<span style=color:#f92672>)</span>
+</span></span></code></pre></div><h1 id=常用举例>常用举例
+<a class=anchor href=#%e5%b8%b8%e7%94%a8%e4%b8%be%e4%be%8b>#</a></h1><p>生成pod</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run pod --image<span style=color:#f92672>=</span>nginx --restart<span style=color:#f92672>=</span>Never --requests<span style=color:#f92672>=</span>
+</span></span></code></pre></div><p>生成job</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run job --image<span style=color:#f92672>=</span>nginx --restart<span style=color:#f92672>=</span>OnFailure
+</span></span></code></pre></div><p>生成deploy</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run deploy --image<span style=color:#f92672>=</span>nginx  --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>
+</span></span></code></pre></div><p>生成svc</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl expose deployment sd2 --type<span style=color:#f92672>=</span>ClusterIP --target-port<span style=color:#f92672>=</span><span style=color:#ae81ff>80</span> --name<span style=color:#f92672>=</span>sd2
+</span></span></code></pre></div><p>生成名称空间</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create ns ns
+</span></span></code></pre></div><p>生成configmap</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create configmap  db2   --from-literal<span style=color:#f92672>=</span>nt<span style=color:#f92672>=</span>nt
+</span></span></code></pre></div><h1 id=查看>查看
+<a class=anchor href=#%e6%9f%a5%e7%9c%8b>#</a></h1><p>查看所有namespace的pods运行情况</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get pods --all-namespaces
+</span></span></code></pre></div><p>查看具体pods，记得后边跟namespace名字哦</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get pods  kubernetes-dashboard-76479d66bb-nj8wr --namespace<span style=color:#f92672>=</span>kube-system
+</span></span></code></pre></div><p>查看pods具体信息</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get pods -o wide kubernetes-dashboard-76479d66bb-nj8wr --namespace<span style=color:#f92672>=</span>kube-system
+</span></span></code></pre></div><p>查看集群健康状态</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get cs
+</span></span></code></pre></div><p>获取所有deployment</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get deployment --all-namespaces
+</span></span></code></pre></div><p>列出该 namespace 中的所有 pod 包括未初始化的</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get pods --include-uninitialized
+</span></span></code></pre></div><p>查看deployment()</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get deployment nginx-app
+</span></span></code></pre></div><p>查看deployment和servers</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get deploy,services
+</span></span></code></pre></div><p>查看pod详情</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl describe pods xxxxpodsname --namespace<span style=color:#f92672>=</span>xxxnamespace
+</span></span></code></pre></div><p>查看pod日志</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl logs $POD_NAME
+</span></span></code></pre></div><p>查看pod变量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl exec my-nginx-5j8ok -- printenv | grep SERVICE
+</span></span></code></pre></div><h1 id=集群>集群
+<a class=anchor href=#%e9%9b%86%e7%be%a4>#</a></h1><p>集群健康情况</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get cs
+</span></span></code></pre></div><p>集群核心组件运行情况</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl cluster-info
+</span></span></code></pre></div><p>命名空间</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get namespaces
+</span></span></code></pre></div><p>版本</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl version
+</span></span></code></pre></div><p>api</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl api-versions
+</span></span></code></pre></div><p>查看事件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get events
+</span></span></code></pre></div><p>获取全部节点</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl get nodes
+</span></span></code></pre></div><p>删除节点</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl delete node k8s2
+</span></span></code></pre></div><h1 id=创建>创建
+<a class=anchor href=#%e5%88%9b%e5%bb%ba>#</a></h1><p>创建资源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create -f ./nginx.yaml
+</span></span></code></pre></div><p>创建当前目录下的所有yaml资源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create -f ./
+</span></span></code></pre></div><p>使用多个文件创建资源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create -f ./nginx1.yaml -f ./mysql2.yaml
+</span></span></code></pre></div><p>使用目录下的所有文件夹的yaml来创建资源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create -f ./dir
+</span></span></code></pre></div><p>使用 url 来创建资源</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl create -f https://xxxx/xxx
+</span></span></code></pre></div><p>创建带有终端的pod</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run -i --tty busybox --image<span style=color:#f92672>=</span>busybox
+</span></span></code></pre></div><p>创建一个nginx实例</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run nginx --image<span style=color:#f92672>=</span>nginx
+</span></span></code></pre></div><p>创建deployment</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run mybusybox --image<span style=color:#f92672>=</span>busybox --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span>
+</span></span></code></pre></div><p>获取 pod 和 svc 的api文档</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl explain pods,svc
+</span></span></code></pre></div><h1 id=更新>更新
+<a class=anchor href=#%e6%9b%b4%e6%96%b0>#</a></h1><p>滚动更新 pod frontend-v1</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl rolling-update python-v1 -f python-v2.json
+</span></span></code></pre></div><p>更新资源名称并更新镜像</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl rolling-update python-v1 python-v2 --image<span style=color:#f92672>=</span>image:v2
+</span></span></code></pre></div><p>更新 frontend pod 中的镜像</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl rolling-update python --image<span style=color:#f92672>=</span>image:v2
+</span></span></code></pre></div><p>退出已存在的进行中的滚动更新</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl rolling-update python-v1 python-v2 --rollback
+</span></span></code></pre></div><p>为 nginx RC 创建svc</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl expose rc nginx --port<span style=color:#f92672>=</span><span style=color:#ae81ff>80</span> --target-port<span style=color:#f92672>=</span><span style=color:#ae81ff>8000</span>
+</span></span></code></pre></div><p>添加标签</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl label pods nginx-pod new-label<span style=color:#f92672>=</span>awesome
+</span></span></code></pre></div><p>添加注解</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl annotate pods nginx-pod icon-url<span style=color:#f92672>=</span>http://goo.gl/XXBTWq
+</span></span></code></pre></div><h1 id=编辑资源>编辑资源
+<a class=anchor href=#%e7%bc%96%e8%be%91%e8%b5%84%e6%ba%90>#</a></h1><p>编辑名为 docker-registry 的 service</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl edit svc/docker-registry
+</span></span></code></pre></div><h1 id=动态伸缩pod>动态伸缩pod
+<a class=anchor href=#%e5%8a%a8%e6%80%81%e4%bc%b8%e7%bc%a9pod>#</a></h1><p>HPA</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl autoscale deployment foo --min<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --max<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>
+</span></span></code></pre></div><p>将foo副本集变成3个</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl scale --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> rs/foo
+</span></span></code></pre></div><p>变更“foo”中指定的资源数量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl scale --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> -f foo.yaml
+</span></span></code></pre></div><p>将deployment/mysql从2个变成3个</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl scale --current-replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>3</span> deployment/mysql
+</span></span></code></pre></div><p>变更多个控制器的数量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl scale --replicas<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span> rc/foo rc/bar rc/baz
+</span></span></code></pre></div><p>查看变更进度</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl rollout status deploy deployment/mysql
+</span></span></code></pre></div><h1 id=删除>删除
+<a class=anchor href=#%e5%88%a0%e9%99%a4>#</a></h1><p>删除 pod.json 文件中定义的类型和名称的 pod</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl delete -f ./pod.json
+</span></span></code></pre></div><p>删除名为“baz”的 pod 和名为“foo”的 service</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl delete pod,service baz foo
+</span></span></code></pre></div><p>删除具有 name=myLabel 标签的 pod 和 serivce</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl delete pods,services -l name<span style=color:#f92672>=</span>myLabel
+</span></span></code></pre></div><p>删除具有 name=myLabel 标签的 pod 和 service，包括尚未初始化的</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl delete pods,services -l name<span style=color:#f92672>=</span>myLabel --include-uninitialized
+</span></span></code></pre></div><p>删除 my-ns namespace下的所有 pod 和 serivce，包括尚未初始化的</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl -n my-ns delete po,svc --all
+</span></span></code></pre></div><p>强制删除</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl delete pods prometheus-7fcfcb9f89-qkkf7 --grace-period<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span> --force
+</span></span></code></pre></div><h1 id=交互>交互
+<a class=anchor href=#%e4%ba%a4%e4%ba%92>#</a></h1><p>输出pod的日志</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl logs nginx-pod
+</span></span></code></pre></div><p>输出pod中容器的日志</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl logs nginx-pod -c my-container
+</span></span></code></pre></div><p>滚动持续输出pod的日志</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl logs -f nginx-pod
+</span></span></code></pre></div><p>滚动持续输出pod中容器的日志</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl logs -f nginx-pod -c my-container
+</span></span></code></pre></div><p>交互式 shell 的方式运行 pod</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl run -i --tty busybox --image<span style=color:#f92672>=</span>busybox -- sh
+</span></span></code></pre></div><p>连接到运行中的容器</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl attach nginx-pod -i
+</span></span></code></pre></div><p>在已存在的pod单容器中执行命令</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl exec nginx-pod -- ls /
+</span></span></code></pre></div><p>在已存在的pod中的容器执行命令</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl exec nginx-pod -c my-container -- ls /
+</span></span></code></pre></div><p>metrics 显示指定pod和容器的监控指标度量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl top pod POD_NAME --containers
+</span></span></code></pre></div><h1 id=调度配置>调度配置
+<a class=anchor href=#%e8%b0%83%e5%ba%a6%e9%85%8d%e7%bd%ae>#</a></h1><p>标记my-node不可调度</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl cordon k8s-node
+</span></span></code></pre></div><p>驱逐my-node上的pod以待维护</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl drain k8s-node
+</span></span></code></pre></div><p>标记my-node可调度</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl uncordon k8s-node
+</span></span></code></pre></div><p>metrics 显示my-node的监控指标度量</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl top node k8s-node
+</span></span></code></pre></div><p>将当前集群状态输出到 stdout</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl cluster-info dump
+</span></span></code></pre></div><p>将当前集群状态输出到 /path/to/cluster-state</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl cluster-info dump --output-directory<span style=color:#f92672>=</span>/path/to/cluster-state
+</span></span></code></pre></div><p>如果该键和影响的污点（taint）已存在，则使用指定的值替换</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>kubectl taint nodes foo dedicated<span style=color:#f92672>=</span>special-user:NoSchedule
+</span></span></code></pre></div></article><footer class=book-footer><div class="flex flex-wrap justify-between"></div><script>(function(){function e(n){const e=window.getSelection(),t=document.createRange();t.selectNodeContents(n),e.removeAllRanges(),e.addRange(t)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#自动补全>自动补全</a></li><li><a href=#常用举例>常用举例</a></li><li><a href=#查看>查看</a></li><li><a href=#集群>集群</a></li><li><a href=#创建>创建</a></li><li><a href=#更新>更新</a></li><li><a href=#编辑资源>编辑资源</a></li><li><a href=#动态伸缩pod>动态伸缩pod</a></li><li><a href=#删除>删除</a></li><li><a href=#交互>交互</a></li><li><a href=#调度配置>调度配置</a></li></ul></nav></div></aside></main></body></html>
