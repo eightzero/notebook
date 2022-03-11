@@ -115,9 +115,28 @@ func main() {
 
 ## 解决方式
 
-`Dockerfile`中加入以下内容：
+`Dockerfile`中不要使用alpine版本编译
+
+`FROM golang:1.17-alpine AS builder` --> `FROM golang:1.17 AS builder`
 
 ```dockerfile
 RUN mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+```
+
+# Docker run mysql fail
+
+## 现象
+
+```sh
+docker: Error response from daemon: driver failed programming external connectivity on endpoint mysql:  (iptables failed: iptables --wait -t nat -A DOCKER -p tcp -d 0/0 --dport 3306 -j DNAT --to-destination 172.17.0.3:3306 ! -i docker0: iptables: No chain/target/match by that name.
+ (exit status 1)).
+```
+
+## 解决方式
+
+使用host模式
+
+```sh
+--net=host 
 ```
 

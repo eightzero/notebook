@@ -1,4 +1,4 @@
-baseURL = 'https://eightzero.site/notebook'
+baseURL = 'https://eightzero.github.io'
 languageCode = 'zh-cn'
 title = 'Note Book'
 theme = 'hugo-book'
